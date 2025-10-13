@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arjun Maurya - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-in-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'typewriter': 'typewriter 3s steps(40) 1s 1 normal both',
+                        'blink': 'blink 1s infinite'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        typewriter: {
+                            '0%': { width: '0' },
+                            '100%': { width: '100%' }
+                        },
+                        blink: {
+                            '0%, 50%': { borderColor: 'transparent' },
+                            '51%, 100%': { borderColor: 'currentColor' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .typewriter-text {
+            overflow: hidden;
+            border-right: 2px solid;
+            white-space: nowrap;
+            animation: typewriter 3s steps(40) 1s 1 normal both, blink 1s infinite;
+        }
+
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark .hover-lift:hover {
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Timeline Animations */
+        .timeline-dot {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .timeline-dot:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+        }
+
+        .timeline-dot::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, transparent, rgba(139, 92, 246, 0.3), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .timeline-dot:hover::before {
+            opacity: 1;
+        }
+
+        /* Timeline Line Animation */
+        .timeline-line {
+            background: linear-gradient(to bottom,
+                    #8b5cf6 0%,
+                    #3b82f6 25%,
+                    #10b981 50%,
+                    #f59e0b 75%,
+                    #ef4444 100%);
+            animation: timelineFlow 3s ease-in-out infinite;
+        }
+
+        @keyframes timelineFlow {
+
+            0%,
+            100% {
+                opacity: 0.7;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Timeline Item Animation */
+        .timeline-item {
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: slideInTimeline 0.6s ease-out forwards;
+        }
+
+        .timeline-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .timeline-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .timeline-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .timeline-item:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .timeline-item:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .timeline-item:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes slideInTimeline {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300 relative">
+    <!-- Floating Theme Toggle Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button id="theme-toggle"
+            class="p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300">
+            <svg id="sun-icon" class="w-6 h-6 hidden dark:block text-yellow-500" fill="currentColor"
+                viewBox="0 0 20 20">
+                <path fill-rule="evenodd"
+                    d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                    clip-rule="evenodd"></path>
+            </svg>
+            <svg id="moon-icon" class="w-6 h-6 block dark:hidden text-gray-700" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+        </button>
+    </div>
+    <!-- Navigation -->
+    <header
+        class="fixed top-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md z-50 border-b border-gray-200 dark:border-gray-700">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <!-- Logo - Left Side -->
+                <div class="flex items-center">
+                    <a href="#home" class="nav-link">
+                        <div
+                            class="w-8 h-8 bg-gray-900 dark:bg-white rounded-lg flex items-center justify-center hover:bg-gray-700 dark:hover:bg-gray-200 transition-colors cursor-pointer">
+                            <span class="text-white dark:text-gray-900 font-bold text-lg">A</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Right Side Content -->
+                <div class="flex items-center space-x-8">
+                    <!-- Navigation Links -->
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#home"
+                            class="nav-link text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors font-medium">Home</a>
+                        <a href="/about"
+                            class="nav-link text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors font-medium">About</a>
+                        <a href="#skills"
+                            class="nav-link text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors font-medium">Skills</a>
+                        <a href="#projects"
+                            class="nav-link text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors font-medium">Projects</a>
+                        <a href="#certificates"
+                            class="nav-link text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors font-medium">Certificates</a>
+                        <a href="/contact"
+                            class="nav-link border-2 border-purple-600 text-purple-600 px-6 py-2 rounded-full hover:bg-purple-600 hover:text-white transition-all duration-300 font-medium">Say
+                            Hello</a>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" class="md:hidden p-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <div class="flex flex-col space-y-4 pt-4">
+                    <a href="#home"
+                        class="nav-link py-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors font-medium">Home</a>
+                    <a href="/about"
+                        class="nav-link py-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors font-medium">About</a>
+                    <a href="#skills"
+                        class="nav-link py-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors font-medium">Skills</a>
+                    <a href="#projects"
+                        class="nav-link py-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors font-medium">Projects</a>
+                    <a href="#certificates"
+                        class="nav-link py-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors font-medium">Certificates</a>
+                    <a href="/contact"
+                        class="nav-link border-2 border-purple-600 text-purple-600 px-6 py-2 rounded-full hover:bg-purple-600 hover:text-white transition-all duration-300 font-medium text-center">Say
+                        Hello</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home"
+            class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+            <div class="container mx-auto px-6 text-center">
+                <div class="fade-in-section">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                        Hi, I'm <span class="text-blue-600 dark:text-blue-400">Arjun</span>
+                    </h1>
+                    <div class="text-xl md:text-2xl mb-8 text-gray-600 dark:text-gray-300">
+                        <span class="typewriter-text">I love turning data into decisions and ideas into code.</span>
+                    </div>
+                    <p class="text-lg md:text-xl mb-12 text-gray-500 dark:text-gray-400 max-w-3xl mx-auto">
+                        Computer Science Engineering Student at Lovely Professional University<br>
+                        <span class="text-sm">Minor in Data Science</span>
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="#projects"
+                            class="bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-8 py-3 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-200 transition-colors hover-lift">
+                            View My Work
+                        </a>
+                        <a href="/contact"
+                            class="border-2 border-gray-900 dark:border-white px-8 py-3 rounded-lg hover:bg-gray-900 dark:hover:bg-white hover:text-white dark:hover:text-gray-900 transition-colors hover-lift">
+                            Get In Touch
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-white dark:bg-gray-900">
+            <div class="container">
+                <div class="max-w-6xl mx-auto">
+                    <div class="fade-in-section text-center mb-16">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6">About Me</h2>
+                        <div class="w-24 h-1 bg-gray-900 dark:bg-white mx-auto mb-8"></div>
+                    </div>
+                    <div class="fade-in-section">
+                        <div class="grid md:grid-cols-2 gap-12 items-center">
+                            <div class="order-2 md:order-1">
+                                <h3 class="text-2xl font-semibold mb-6">Passionate Developer & Data Enthusiast</h3>
+                                <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                                    I'm a 3rd-year Computer Science Engineering student at Lovely Professional
+                                    University with a minor in Data Science.
+                                    My passion lies in transforming complex data into actionable insights and bringing
+                                    innovative ideas to life through code.
+                                </p>
+                                <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                                    I enjoy tackling challenging problems and have developed strong skills in Python,
+                                    C++, Java, and web development.
+                                    Whether it's building automation scripts, analyzing datasets, or creating web
+                                    applications, I love the process of
+                                    turning concepts into reality.
+                                </p>
+                                <div class="flex flex-wrap gap-3">
+                                    <span class="bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-full text-sm">Problem
+                                        Solving</span>
+                                    <span class="bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-full text-sm">Data
+                                        Analysis</span>
+                                    <span class="bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-full text-sm">Web
+                                        Development</span>
+                                    <span class="bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-full text-sm">Machine
+                                        Learning</span>
+                                </div>
+                            </div>
+                            <div class="order-1 md:order-2 flex justify-center md:justify-end">
+                                <div class="avatar-container">
+                                    <div
+                                        class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-gray-200 dark:border-gray-700 shadow-2xl hover-lift avatar-glow">
+                                        <img src="{{ url_for('static', filename='images/My_image.png') }}"
+                                            alt="Arjun Maurya"
+                                            class="w-full h-full object-cover object-center avatar-image">
+                                    </div>
+                                    <div
+                                        class="absolute -bottom-4 -right-4 w-16 h-16 bg-gray-900 dark:bg-white rounded-full flex items-center justify-center shadow-lg avatar-badge floating-badge">
+                                        <span class="text-2xl">💻</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Timeline Section -->
+                        <div class="mt-16 w-full">
+                            <div class="bg-gray-100 dark:bg-gray-800 rounded-2xl p-12 hover-lift max-w-7xl mx-auto">
+                                <h4 class="text-xl font-semibold mb-8 text-center">My Journey</h4>
+
+                                <!-- Timeline Container -->
+                                <div class="flex flex-col lg:flex-row gap-8">
+                                    <!-- Left Content Area -->
+                                    <div class="flex justify-between w-full flex-col" >
+                                        <!-- Main Description - Fixed Height Container -->
+                                        <div id="timeline-content"
+                                            class="text-center mb-8 h-24 flex items-center justify-center">
+                                            <p id="timeline-description"
+                                                class="text-xl text-gray-600 dark:text-gray-300 transition-all duration-500 ease-in-out">
+                                                The beginning of my journey.
+                                            </p>
+                                        </div>
+
+                                        <!-- Horizontal Timeline - Fixed Position -->
+                                        <div class="relative mt-8">
+                                            <!-- Timeline Track -->
+                                            <div
+                                                class="h-2 w-full bg-gray-300 dark:bg-gray-600 absolute top-1/2 transform -translate-y-1/2 rounded-full">
+                                            </div>
+
+                                            <!-- Active Marker -->
+                                            <div id="active-marker"
+                                                class="absolute top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-4 h-4 bg-green-400 rounded-full border-2 border-gray-600 z-20 transition-all duration-300"
+                                                style="left: 0%;"></div>
+
+                                            <!-- Active Year Label -->
+                                            <div id="active-year-label"
+                                                class="absolute top-1/2 transform translate-y-full -translate-x-1/2 text-sm font-medium text-gray-800 dark:text-white mt-2 z-20"
+                                                style="left: 0%;">2004</div>
+
+                                            <!-- Timeline Items -->
+                                            <div class="flex justify-between items-center relative z-10">
+                                                <div class="timeline-item flex flex-col items-center cursor-pointer group"
+                                                    data-year="2004" data-description="The beginning of my journey."
+                                                    data-title="Born"
+                                                    data-context="Born in Bhadohi, Uttar Pradesh, India"
+                                                    data-impact="Foundation of life." data-index="0">
+                                                    <div
+                                                        class="w-4 h-4 bg-white border-2 border-gray-400 rounded-full group-hover:border-green-400 group-hover:scale-110 transition-all duration-300">
+                                                    </div>
+                                                    <div
+                                                        class="text-sm font-medium text-gray-500 dark:text-gray-400 mt-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
+                                                        2004</div>
+                                                </div>
+                                                <div class="timeline-item flex flex-col items-center cursor-pointer group"
+                                                    data-year="2019"
+                                                    data-description="Successfully completed my Secondary School Examination (Class 10)."
+                                                    data-title="Secondary Education Completion"
+                                                    data-context="Central Board of Secondary Education (CBSE)||Subjects: English, Hindi, Mathematics, Science, Social Science, Foundation of IT"
+                                                    data-impact="Built a strong academic foundation in core subjects."
+                                                    data-index="1">
+                                                    <div
+                                                        class="w-4 h-4 bg-white border-2 border-gray-400 rounded-full group-hover:border-green-400 group-hover:scale-110 transition-all duration-300">
+                                                    </div>
+                                                    <div
+                                                        class="text-sm font-medium text-gray-500 dark:text-gray-400 mt-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
+                                                        2019</div>
+                                                </div>
+                                                <div class="timeline-item flex flex-col items-center cursor-pointer group"
+                                                    data-year="2021"
+                                                    data-description="Successfully completed my Senior School Certificate Examination (Class 12)."
+                                                    data-title="Senior Secondary Education Completion"
+                                                    data-context="Central Board of Secondary Education (CBSE)||Subjects: English Core, Mathematics, Physics, Chemistry, Physical Education, Work Experience, Health & Physical Education, General Studies"
+                                                    data-impact="Completed advanced academic education, preparing for higher studies in technology."
+                                                    data-index="2">
+                                                    <div
+                                                        class="w-4 h-4 bg-white border-2 border-gray-400 rounded-full group-hover:border-green-400 group-hover:scale-110 transition-all duration-300">
+                                                    </div>
+                                                    <div
+                                                        class="text-sm font-medium text-gray-500 dark:text-gray-400 mt-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
+                                                        2021</div>
+                                                </div>
+                                                <div class="timeline-item flex flex-col items-center cursor-pointer group"
+                                                    data-year="2021"
+                                                    data-description="Participated in an 'Environmental Awareness & Tree Planting' project under the supervision of Rajesh Singh Kushwaha, dedicating 35 hours to the project."
+                                                    data-title="Environmental Awareness & Tree Planting"
+                                                    data-context="Green Peace Nature Foundation||Community service and environmental conservation"
+                                                    data-impact="Developed social responsibility and environmental awareness."
+                                                    data-index="3">
+                                                    <div
+                                                        class="w-4 h-4 bg-white border-2 border-gray-400 rounded-full group-hover:border-green-400 group-hover:scale-110 transition-all duration-300">
+                                                    </div>
+                                                    <div
+                                                        class="text-sm font-medium text-gray-500 dark:text-gray-400 mt-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
+                                                        2021</div>
+                                                </div>
+                                                <div class="timeline-item flex flex-col items-center cursor-pointer group"
+                                                    data-year="2022"
+                                                    data-description="Started pursuing B.Tech in Computer Science and Engineering (CSE) with a minor in Data Science at Lovely Professional University."
+                                                    data-title="B.Tech in Computer Science and Engineering"
+                                                    data-context="Lovely Professional University (LPU)||Registration No: 12318080"
+                                                    data-impact="Began professional journey toward becoming a computer engineer."
+                                                    data-index="4">
+                                                    <div
+                                                        class="w-4 h-4 bg-white border-2 border-gray-400 rounded-full group-hover:border-green-400 group-hover:scale-110 transition-all duration-300">
+                                                    </div>
+                                                    <div
+                                                        class="text-sm font-medium text-gray-500 dark:text-gray-400 mt-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
+                                                        2022</div>
+                                                </div>
+                                                <div class="timeline-item flex flex-col items-center cursor-pointer group"
+                                                    data-year="2023"
+                                                    data-description="Started learning Python programming language, building on existing knowledge of C and C++."
+                                                    data-title="Python and Programming Foundations"
+                                                    data-context="Languages: C, C++, Python (Basic)||Focus on programming logic and data structures"
+                                                    data-impact="Strengthened problem-solving and coding fundamentals."
+                                                    data-index="5">
+                                                    <div
+                                                        class="w-4 h-4 bg-white border-2 border-gray-400 rounded-full group-hover:border-green-400 group-hover:scale-110 transition-all duration-300">
+                                                    </div>
+                                                    <div
+                                                        class="text-sm font-medium text-gray-500 dark:text-gray-400 mt-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
+                                                        2023</div>
+                                                </div>
+                                                <div class="timeline-item flex flex-col items-center cursor-pointer group"
+                                                    data-year="2024"
+                                                    data-description="Completed a course authorized by Google and offered through Coursera, covering networking technologies, cloud, and practical applications."
+                                                    data-title="The Bits and Bytes of Computer Networking"
+                                                    data-context="Google, Coursera||Computer Networking"
+                                                    data-impact="Gained a solid understanding of computer networking fundamentals."
+                                                    data-index="6">
+                                                    <div
+                                                        class="w-4 h-4 bg-white border-2 border-gray-400 rounded-full group-hover:border-green-400 group-hover:scale-110 transition-all duration-300">
+                                                    </div>
+                                                    <div
+                                                        class="text-sm font-medium text-gray-500 dark:text-gray-400 mt-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
+                                                        2024</div>
+                                                </div>
+                                                <div class="timeline-item flex flex-col items-center cursor-pointer group"
+                                                    data-year="2024"
+                                                    data-description="Completed a course authorized by Universitat Autònoma de Barcelona on Coursera, requiring 40 hours of dedication."
+                                                    data-title="Digital Systems: From Logic Gates to Processors"
+                                                    data-context="Universitat Autònoma de Barcelona, Coursera||Digital Systems, Logic Gates, Processors"
+                                                    data-impact="Acquired knowledge of digital electronics and computer architecture."
+                                                    data-index="7">
+                                                    <div
+                                                        class="w-4 h-4 bg-white border-2 border-gray-400 rounded-full group-hover:border-green-400 group-hover:scale-110 transition-all duration-300">
+                                                    </div>
+                                                    <div
+                                                        class="text-sm font-medium text-gray-500 dark:text-gray-400 mt-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
+                                                        2024</div>
+                                                </div>
+                                                <div class="timeline-item flex flex-col items-center cursor-pointer group"
+                                                    data-year="2024"
+                                                    data-description="Developed a real-time visualization project demonstrating memory allocation, paging, and segmentation for the Operating System course (CSE306)."
+                                                    data-title="Real-Time Memory Allocation Tracker Project"
+                                                    data-context="Operating Systems Project||Languages and Tools: C/C++, Data Visualization"
+                                                    data-impact="Enhanced understanding of memory management in operating systems."
+                                                    data-index="8">
+                                                    <div
+                                                        class="w-4 h-4 bg-white border-2 border-gray-400 rounded-full group-hover:border-green-400 group-hover:scale-110 transition-all duration-300">
+                                                    </div>
+                                                    <div
+                                                        class="text-sm font-medium text-gray-500 dark:text-gray-400 mt-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
+                                                        2024</div>
+                                                </div>
+                                                <div class="timeline-item flex flex-col items-center cursor-pointer group"
+                                                    data-year="2024"
+                                                    data-description="Completed a Data Science minor project focused on analyzing beneficiaries under the Indira Gandhi National Old Age Pension Scheme (IGNOAPS)."
+                                                    data-title="Data Analysis of IGNOAPS Beneficiaries"
+                                                    data-context="INT375: Data Science Minor Project||Exploratory Data Analysis, Visualization, Statistical Summary"
+                                                    data-impact="Applied data analysis and visualization techniques to real-world social data."
+                                                    data-index="9">
+                                                    <div
+                                                        class="w-4 h-4 bg-white border-2 border-gray-400 rounded-full group-hover:border-green-400 group-hover:scale-110 transition-all duration-300">
+                                                    </div>
+                                                    <div
+                                                        class="text-sm font-medium text-gray-500 dark:text-gray-400 mt-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
+                                                        2024</div>
+                                                </div>
+                                                <div class="timeline-item flex flex-col items-center cursor-pointer group"
+                                                    data-year="2024"
+                                                    data-description="Participated in the 'Code-A-Haunt' 24-hour hackathon organized by CodingBlocks LPU."
+                                                    data-title="Code-A-Haunt Hackathon Participation"
+                                                    data-context="CodingBlocks LPU, Lovely Professional University||24-hour hackathon focused on coding and innovation"
+                                                    data-impact="Demonstrated teamwork, creativity, and problem-solving under pressure."
+                                                    data-index="10">
+                                                    <div
+                                                        class="w-4 h-4 bg-white border-2 border-gray-400 rounded-full group-hover:border-green-400 group-hover:scale-110 transition-all duration-300">
+                                                    </div>
+                                                    <div
+                                                        class="text-sm font-medium text-gray-500 dark:text-gray-400 mt-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
+                                                        2024</div>
+                                                </div>
+                                                <div class="timeline-item flex flex-col items-center cursor-pointer group"
+                                                    data-year="2025"
+                                                    data-description="Completed a 6-week training by Gokboru Tech Pvt. Ltd., covering HTML, CSS, JavaScript, responsive design, and modern frameworks."
+                                                    data-title="Front-End Web Development Training"
+                                                    data-context="Gokboru Tech Pvt. Ltd., Startup India, Startup Punjab||Front-End Web Development, Modern Frameworks"
+                                                    data-impact="Gained hands-on experience in building responsive web applications."
+                                                    data-index="11">
+                                                    <div
+                                                        class="w-4 h-4 bg-white border-2 border-gray-400 rounded-full group-hover:border-green-400 group-hover:scale-110 transition-all duration-300">
+                                                    </div>
+                                                    <div
+                                                        class="text-sm font-medium text-gray-500 dark:text-gray-400 mt-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
+                                                        2025</div>
+                                                </div>
+                                                <div class="timeline-item flex flex-col items-center cursor-pointer group"
+                                                    data-year="2025"
+                                                    data-description="Started learning the MERN stack (MongoDB, Express.js, React.js, Node.js) from basics to build full-stack web applications."
+                                                    data-title="MERN Stack Development Learning"
+                                                    data-context="Self-learning, Online resources||Web development and backend integration"
+                                                    data-impact="Strengthened understanding of full-stack web application development."
+                                                    data-index="12">
+                                                    <div
+                                                        class="w-4 h-4 bg-white border-2 border-gray-400 rounded-full group-hover:border-green-400 group-hover:scale-110 transition-all duration-300">
+                                                    </div>
+                                                    <div
+                                                        class="text-sm font-medium text-gray-500 dark:text-gray-400 mt-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
+                                                        2025</div>
+                                                </div>
+                                                <div class="timeline-item flex flex-col items-center cursor-pointer group"
+                                                    data-year="2025"
+                                                    data-description="Completed a Udemy certificate course on AI Essentials for Beginners, focusing on ChatGPT and prompt engineering."
+                                                    data-title="ChatGPT Made Easy: AI Essentials for Beginners"
+                                                    data-context="Udemy, Asif Farooqi, Abdullah Dar||AI Essentials, ChatGPT"
+                                                    data-impact="Developed foundational knowledge of AI and natural language models."
+                                                    data-index="13">
+                                                    <div
+                                                        class="w-4 h-4 bg-white border-2 border-gray-400 rounded-full group-hover:border-green-400 group-hover:scale-110 transition-all duration-300">
+                                                    </div>
+                                                    <div
+                                                        class="text-sm font-medium text-gray-500 dark:text-gray-400 mt-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
+                                                        2025</div>
+                                                </div>
+                                                <div class="timeline-item flex flex-col items-center cursor-pointer group"
+                                                    data-year="2025"
+                                                    data-description="Completed a Udemy course mastering Generative AI and tools like ChatGPT, DALL·E, and Midjourney."
+                                                    data-title="Master Generative AI & Generative AI Tools (ChatGPT & More)"
+                                                    data-context="Udemy, Saad A||Generative AI, AI Tools"
+                                                    data-impact="Built strong expertise in Generative AI concepts and applications."
+                                                    data-index="14">
+                                                    <div
+                                                        class="w-4 h-4 bg-white border-2 border-gray-400 rounded-full group-hover:border-green-400 group-hover:scale-110 transition-all duration-300">
+                                                    </div>
+                                                    <div
+                                                        class="text-sm font-medium text-gray-500 dark:text-gray-400 mt-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
+                                                        2025</div>
+                                                </div>
+                                                <div class="timeline-item flex flex-col items-center cursor-pointer group"
+                                                    data-year="2025"
+                                                    data-description="Completed a Udemy course on building AI applications using No-Code tools."
+                                                    data-title="Build Generative AI Apps and Solutions with No-Code Tools"
+                                                    data-context="Udemy, Henry Habib, The Intelligent Worker||Generative AI, No-Code Tools"
+                                                    data-impact="Learned to create AI-powered applications without coding."
+                                                    data-index="15">
+                                                    <div
+                                                        class="w-4 h-4 bg-white border-2 border-gray-400 rounded-full group-hover:border-green-400 group-hover:scale-110 transition-all duration-300">
+                                                    </div>
+                                                    <div
+                                                        class="text-sm font-medium text-gray-500 dark:text-gray-400 mt-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
+                                                        2025</div>
+                                                </div>
+                                                <div class="timeline-item flex flex-col items-center cursor-pointer group"
+                                                    data-year="Future"
+                                                    data-description="Focused on creating innovative tech solutions, strengthening skills in AI and web development, and contributing to the tech community."
+                                                    data-title="Vision Ahead"
+                                                    data-context="Career growth||Innovation in technology||Continuous learning and exploration"
+                                                    data-impact="Aiming to make meaningful contributions in technology and data-driven innovation."
+                                                    data-index="16">
+                                                    <div
+                                                        class="w-4 h-4 bg-white border-2 border-gray-400 rounded-full group-hover:border-green-400 group-hover:scale-110 transition-all duration-300">
+                                                    </div>
+                                                    <div
+                                                        class="text-sm font-medium text-gray-500 dark:text-gray-400 mt-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300">
+                                                        Future</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-center text-gray-500 dark:text-gray-400 text-sm mt-4">Scrub the
+                                            timeline</div>
+                                    </div>
+
+                                    <!-- Right Sidebar -->
+                                    <div
+                                        class="w-full overflow-hidden h-[90%] lg:w-80 bg-white dark:bg-gray-700 rounded-lg p-6 border border-gray-200 dark:border-gray-600">
+                                        <h5 class="text-lg font-semibold text-gray-800 dark:text-white mb-6">Timeline
+                                            Details</h5>
+
+                                        <!-- Current Event Details -->
+                                        <div class="space-y-6">
+                                            <!-- Year Badge -->
+                                            <div class="flex items-center space-x-3">
+                                                <div class="w-4 h-4 bg-green-400 rounded-full border-2 border-gray-600">
+                                                </div>
+                                                <span id="detail-year"
+                                                    class="text-xl font-light text-gray-800 dark:text-white">2004</span>
+                                            </div>
+
+                                            <!-- Event Title -->
+                                            <div>
+                                                <h6 id="detail-title"
+                                                    class="text-lg font-medium text-gray-800 dark:text-white mb-3">Born
+                                                </h6>
+                                                <p id="detail-description"
+                                                    class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                                                    The beginning of my journey.
+                                                </p>
+                                            </div>
+
+                                            <!-- Context -->
+                                            <div class="border-t border-gray-200 dark:border-gray-600 pt-4">
+                                                <h6 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+                                                    Context</h6>
+                                                <ul id="detail-context"
+                                                    class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-1">
+                                                    <li>Born in Bhadohi, Uttar Pradesh, India</li>
+                                                </ul>
+                                            </div>
+
+                                            <!-- Impact -->
+                                            <div class="border-t border-gray-200 dark:border-gray-600 pt-4">
+                                                <h6 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+                                                    Impact</h6>
+                                                <p id="detail-impact"
+                                                    class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                                                    Foundation of life.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 bg-gray-50 dark:bg-gray-800">
+            <div class="container mx-auto px-6">
+                <div class="max-w-6xl mx-auto">
+                    <div class="fade-in-section text-center mb-16">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6">Skills & Technologies</h2>
+                        <div class="w-24 h-1 bg-gray-900 dark:bg-white mx-auto mb-8"></div>
+                        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                            A comprehensive overview of my technical skills and the tools I use to bring ideas to life.
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Python Skills -->
+                        <div class="fade-in-section bg-white dark:bg-gray-900 rounded-lg p-6 hover-lift">
+                            <div class="text-3xl mb-4">🐍</div>
+                            <h3 class="text-xl font-semibold mb-4">Python</h3>
+                            <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                                <li>• Core Programming (OOP, Functions, Loops)</li>
+                                <li>• Data Analysis: Pandas, NumPy, Matplotlib</li>
+                                <li>• Web Scraping: Selenium, Beautiful Soup</li>
+                                <li>• Machine Learning: Scikit-Learn</li>
+                                <li>• GUI Development: Tkinter, Pygame</li>
+                                <li>• Web Development: Flask</li>
+                            </ul>
+                        </div>
+
+                        <!-- Programming Languages -->
+                        <div class="fade-in-section bg-white dark:bg-gray-900 rounded-lg p-6 hover-lift">
+                            <div class="text-3xl mb-4">💻</div>
+                            <h3 class="text-xl font-semibold mb-4">Programming Languages</h3>
+                            <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                                <li>• C++ (Advanced)</li>
+                                <li>• Java (Object-Oriented Programming)</li>
+                                <li>• JavaScript (ES6+)</li>
+                                <li>• HTML5 & CSS3</li>
+                                <li>• SQL (Database Queries)</li>
+                            </ul>
+                        </div>
+
+                        <!-- Web Development -->
+                        <div class="fade-in-section bg-white dark:bg-gray-900 rounded-lg p-6 hover-lift">
+                            <div class="text-3xl mb-4">🌐</div>
+                            <h3 class="text-xl font-semibold mb-4">Web Development</h3>
+                            <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                                <li>• React.js (Frontend Framework)</li>
+                                <li>• Node.js (Backend Runtime)</li>
+                                <li>• MongoDB (NoSQL Database)</li>
+                                <li>• Express.js (Web Framework)</li>
+                                <li>• RESTful APIs</li>
+                                <li>• Responsive Design</li>
+                            </ul>
+                        </div>
+
+                        <!-- Data Science -->
+                        <div class="fade-in-section bg-white dark:bg-gray-900 rounded-lg p-6 hover-lift">
+                            <div class="text-3xl mb-4">📊</div>
+                            <h3 class="text-xl font-semibold mb-4">Data Science & Analytics</h3>
+                            <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                                <li>• Data Visualization: Plotly, Seaborn</li>
+                                <li>• Statistical Analysis</li>
+                                <li>• Excel (Advanced Functions)</li>
+                                <li>• Power BI (Business Intelligence)</li>
+                                <li>• Data Cleaning & Preprocessing</li>
+                                <li>• Predictive Modeling</li>
+                            </ul>
+                        </div>
+
+                        <!-- Tools & Technologies -->
+                        <div class="fade-in-section bg-white dark:bg-gray-900 rounded-lg p-6 hover-lift">
+                            <div class="text-3xl mb-4">🛠️</div>
+                            <h3 class="text-xl font-semibold mb-4">Tools & Technologies</h3>
+                            <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                                <li>• Git & GitHub (Version Control)</li>
+                                <li>• VS Code (Development Environment)</li>
+                                <li>• Jupyter Notebooks</li>
+                                <li>• Command Line Interface</li>
+                                <li>• API Development & Testing</li>
+                                <li>• Database Design</li>
+                            </ul>
+                        </div>
+
+                        <!-- Game Development -->
+                        <div class="fade-in-section bg-white dark:bg-gray-900 rounded-lg p-6 hover-lift">
+                            <div class="text-3xl mb-4">🎮</div>
+                            <h3 class="text-xl font-semibold mb-4">Game Development</h3>
+                            <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                                <li>• Pygame (Python Game Development)</li>
+                                <li>• Game Logic Implementation</li>
+                                <li>• User Interface Design</li>
+                                <li>• Collision Detection</li>
+                                <li>• Game State Management</li>
+                                <li>• Projects: Blackjack, Pong, Snake</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 bg-white dark:bg-gray-900">
+            <div class="container mx-auto px-6">
+                <div class="max-w-6xl mx-auto">
+                    <div class="fade-in-section text-center mb-16">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6">Featured Projects</h2>
+                        <div class="w-24 h-1 bg-gray-900 dark:bg-white mx-auto mb-8"></div>
+                        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                            A showcase of my recent work, demonstrating my skills in system programming, web
+                            development, and data analysis.
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Project 1 -->
+                        <div class="fade-in-section bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden hover-lift">
+                            <div class="p-6">
+                                <div class="text-3xl mb-4">💾</div>
+                                <h3 class="text-xl font-semibold mb-3">Real-Time Memory Allocation Tracker</h3>
+                                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                    A comprehensive system that visualizes paging and segmentation in operating systems,
+                                    providing real-time insights into memory management processes.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">C++</span>
+                                    <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">System
+                                        Programming</span>
+                                    <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">OS
+                                        Concepts</span>
+                                </div>
+                                <a href="https://github.com/Arjun-maurya7"
+                                    class="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+                                    View Project →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Project 2 -->
+                        <div class="fade-in-section bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden hover-lift">
+                            <div class="p-6">
+                                <div class="text-3xl mb-4">✍️</div>
+                                <h3 class="text-xl font-semibold mb-3">Grammar Checker Tool</h3>
+                                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                    An intelligent tool that detects and corrects grammar and spelling errors in text,
+                                    helping users improve their writing quality and accuracy.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span
+                                        class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">JavaScript</span>
+                                    <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">NLP</span>
+                                    <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Web
+                                        App</span>
+                                </div>
+                                <a href="https://github.com/Arjun-maurya7/AI-Grammer-Checker"
+                                    class="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+                                    View Project →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Project 3 -->
+                        <div class="fade-in-section bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden hover-lift">
+                            <div class="p-6">
+                                <div class="text-3xl mb-4">📈</div>
+                                <h3 class="text-xl font-semibold mb-3">Data Analysis of IGNOAPS Beneficiaries</h3>
+                                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                    A comprehensive data science project analyzing pension scheme data to extract
+                                    meaningful
+                                    insights and patterns for better policy decisions.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span
+                                        class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Python</span>
+                                    <span
+                                        class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Pandas</span>
+                                    <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Data
+                                        Analysis</span>
+                                </div>
+                                <a href="https://github.com/Arjun-maurya7/Data_Analysis_on_IGNOAPS"
+                                    class="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+                                    View Project →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificates Section -->
+        <section id="certificates" class="py-20 bg-white dark:bg-gray-900">
+            <div class="container mx-auto px-6">
+                <div class="max-w-6xl mx-auto">
+                    <div class="fade-in-section text-center mb-16">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6">Certificates & Achievements</h2>
+                        <div class="w-24 h-1 bg-gray-900 dark:bg-white mx-auto mb-8"></div>
+                        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                            A showcase of my completed courses and certifications that demonstrate my commitment to
+                            continuous learning.
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Certificate 1 -->
+                        <div class="fade-in-section bg-gray-50 dark:bg-gray-800 rounded-lg p-6 hover-lift">
+                            <div class="text-3xl mb-4">🌐</div>
+                            <h3 class="text-xl font-semibold mb-3">Computer Networking</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                Google via Coursera - The Bits and Bytes of Computer Networking
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span
+                                    class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Networking</span>
+                                <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Cloud</span>
+                                <span
+                                    class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Protocols</span>
+                            </div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">2024 • 40+ hours</p>
+                        </div>
+
+                        <!-- Certificate 2 -->
+                        <div class="fade-in-section bg-gray-50 dark:bg-gray-800 rounded-lg p-6 hover-lift">
+                            <div class="text-3xl mb-4">⚡</div>
+                            <h3 class="text-xl font-semibold mb-3">Digital Systems</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                Universitat Autònoma de Barcelona - From Logic Gates to Processors
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span
+                                    class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Electronics</span>
+                                <span
+                                    class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Architecture</span>
+                                <span
+                                    class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Processors</span>
+                            </div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">2024 • 40 hours</p>
+                        </div>
+
+                        <!-- Certificate 3 -->
+                        <div class="fade-in-section bg-gray-50 dark:bg-gray-800 rounded-lg p-6 hover-lift">
+                            <div class="text-3xl mb-4">💻</div>
+                            <h3 class="text-xl font-semibold mb-3">Front-End Development</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                Gokboru Tech Pvt. Ltd. - Web Development Training
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span
+                                    class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">HTML/CSS</span>
+                                <span
+                                    class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">JavaScript</span>
+                                <span
+                                    class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Responsive</span>
+                            </div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">2025 • 6 weeks</p>
+                        </div>
+
+                        <!-- Certificate 4 -->
+                        <div class="fade-in-section bg-gray-50 dark:bg-gray-800 rounded-lg p-6 hover-lift">
+                            <div class="text-3xl mb-4">🤖</div>
+                            <h3 class="text-xl font-semibold mb-3">AI Essentials</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                Udemy - ChatGPT Made Easy: AI Essentials for Beginners
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">AI</span>
+                                <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">ChatGPT</span>
+                                <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">NLP</span>
+                            </div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">2025 • Self-paced</p>
+                        </div>
+
+                        <!-- Certificate 5 -->
+                        <div class="fade-in-section bg-gray-50 dark:bg-gray-800 rounded-lg p-6 hover-lift">
+                            <div class="text-3xl mb-4">🎨</div>
+                            <h3 class="text-xl font-semibold mb-3">Generative AI</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                Udemy - Master Generative AI & AI Tools (ChatGPT & More)
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Generative
+                                    AI</span>
+                                <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">DALL·E</span>
+                                <span
+                                    class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Midjourney</span>
+                            </div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">2025 • Self-paced</p>
+                        </div>
+
+                        <!-- Certificate 6 -->
+                        <div class="fade-in-section bg-gray-50 dark:bg-gray-800 rounded-lg p-6 hover-lift">
+                            <div class="text-3xl mb-4">🛠️</div>
+                            <h3 class="text-xl font-semibold mb-3">No-Code AI Apps</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                Udemy - Build Generative AI Apps with No-Code Tools
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">No-Code</span>
+                                <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">AI Apps</span>
+                                <span
+                                    class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Automation</span>
+                            </div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">2025 • Self-paced</p>
+                        </div>
+                    </div>
+
+                    <!-- View All Certificates Button -->
+                    <div class="text-center mt-12">
+                        <a href="/certificates"
+                            class="inline-flex items-center bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-8 py-3 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-200 transition-colors hover-lift">
+                            View All Certificates
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-800">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <div class="fade-in-section text-center mb-16">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6">Get In Touch</h2>
+                        <div class="w-24 h-1 bg-gray-900 dark:bg-white mx-auto mb-8"></div>
+                        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                            I'm always interested in new opportunities and exciting projects. Let's connect and discuss
+                            how we can work together!
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-12">
+                        <!-- Contact Form -->
+                        <div class="fade-in-section">
+                            <h3 class="text-2xl font-semibold mb-6">Send me a message</h3>
+                            <form class="space-y-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium mb-2">Name</label>
+                                    <input type="text" id="name" name="name"
+                                        class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:border-transparent transition-colors"
+                                        required>
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                                    <input type="email" id="email" name="email"
+                                        class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:border-transparent transition-colors"
+                                        required>
+                                </div>
+                                <div>
+                                    <label for="subject" class="block text-sm font-medium mb-2">Subject</label>
+                                    <input type="text" id="subject" name="subject"
+                                        class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:border-transparent transition-colors"
+                                        required>
+                                </div>
+                                <div>
+                                    <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                                    <textarea id="message" name="message" rows="5"
+                                        class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:border-transparent transition-colors"
+                                        required></textarea>
+                                </div>
+                                <button type="submit"
+                                    class="w-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-8 py-3 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-200 transition-colors hover-lift">
+                                    Send Message
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Contact Info -->
+                        <div class="fade-in-section">
+                            <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
+                            <div class="space-y-6">
+                                <div class="flex items-center space-x-4">
+                                    <div
+                                        class="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium">Email</h4>
+                                        <a href="mailto:arjunmaurya2026@gmail.com"
+                                            class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">
+                                            arjunmaurya2026@gmail.com
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center space-x-4">
+                                    <div
+                                        class="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center">
+                                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium">LinkedIn</h4>
+                                        <a href="https://www.linkedin.com/in/maurya-arjun/" target="_blank"
+                                            class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">
+                                            linkedin.com/in/maurya-arjun/
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center space-x-4">
+                                    <div
+                                        class="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center">
+                                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium">GitHub</h4>
+                                        <a href="https://github.com/Arjun-maurya7" target="_blank"
+                                            class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">
+                                            github.com/Arjun-maurya7
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center space-x-4">
+                                    <div
+                                        class="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                            </path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium">Location</h4>
+                                        <p class="text-gray-600 dark:text-gray-300">Bhadohi, Uttar Pradesh, India</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 dark:bg-black text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-400">Designed & Built by Arjun Maurya © 2025</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    <!-- Timeline Interactive Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const activeMarker = document.getElementById('active-marker');
+            const activeYearLabel = document.getElementById('active-year-label');
+            const timelineDescription = document.getElementById('timeline-description');
+
+            // Sidebar elements
+            const detailYear = document.getElementById('detail-year');
+            const detailTitle = document.getElementById('detail-title');
+            const detailDescription = document.getElementById('detail-description');
+            const detailContext = document.getElementById('detail-context');
+            const detailImpact = document.getElementById('detail-impact');
+
+            let currentIndex = 0;
+            const totalItems = timelineItems.length;
+
+            function updateContent(description, title, context, impact) {
+                // Add fade out animation to main description
+                timelineDescription.style.opacity = '0';
+                timelineDescription.style.transform = 'translateY(20px)';
+
+                // After fade out, update content and fade in
+                setTimeout(() => {
+                    timelineDescription.textContent = description;
+                    timelineDescription.style.opacity = '1';
+                    timelineDescription.style.transform = 'translateY(0)';
+                }, 250);
+
+                // Update sidebar details
+                detailTitle.textContent = title;
+                detailDescription.textContent = description;
+
+                // Clear previous context
+                detailContext.innerHTML = '';
+                context.split('||').forEach(item => {
+                    if (item.trim()) {
+                        const li = document.createElement('li');
+                        li.textContent = item.trim();
+                        detailContext.appendChild(li);
+                    }
+                });
+
+                detailImpact.textContent = impact;
+            }
+
+            function updateTimeline(index) {
+                currentIndex = index;
+                const percentage = (index / (totalItems - 1)) * 100;
+
+                // Smooth marker movement
+                activeMarker.style.left = percentage + '%';
+                activeYearLabel.style.left = percentage + '%';
+
+                // Update active year label text with animation
+                const activeItem = timelineItems[index];
+                activeYearLabel.style.opacity = '0';
+                setTimeout(() => {
+                    activeYearLabel.textContent = activeItem.dataset.year;
+                    activeYearLabel.style.opacity = '1';
+                }, 150);
+
+                // Update sidebar year
+                detailYear.textContent = activeItem.dataset.year;
+
+                // Update content with animation
+                updateContent(activeItem.dataset.description, activeItem.dataset.title, activeItem.dataset.context, activeItem.dataset.impact);
+            }
+
+            // Initialize with the first item
+            updateTimeline(0);
+
+            // Click and hover on timeline items
+            timelineItems.forEach((item, index) => {
+                item.addEventListener('click', function () {
+                    updateTimeline(index);
+                });
+
+                // Hover events
+                item.addEventListener('mouseenter', function () {
+                    updateTimeline(index);
+                });
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    updateTimeline(Math.min(currentIndex + 1, totalItems - 1));
+                } else if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    updateTimeline(Math.max(currentIndex - 1, 0));
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

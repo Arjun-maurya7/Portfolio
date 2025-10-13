@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Arjun Maurya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #faf9f7;
+        }
+        .timeline-item {
+            transition: all 0.3s ease;
+        }
+        .timeline-item:hover {
+            transform: translateY(-2px);
+        }
+        .timeline-item.active {
+            transform: translateY(-4px);
+        }
+        .timeline-line {
+            background-color: #d1d5db;
+        }
+        .content-fade {
+            transition: opacity 0.5s ease-in-out;
+        }
+        .content-fade.fade-out {
+            opacity: 0;
+        }
+        .content-fade.fade-in {
+            opacity: 1;
+        }
+        .timeline-track {
+            background-color: #e5e7eb;
+        }
+        .active-marker {
+            background-color: #86efac;
+            border: 2px solid #374151;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white/10 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-8">
+                    <a href="/" class="text-gray-600 hover:text-gray-800 transition-colors duration-300 font-medium">
+                        <i class="fas fa-home mr-2"></i>Home
+                    </a>
+                    <a href="/about" class="text-gray-800 hover:text-gray-600 transition-colors duration-300 font-medium bg-gray-100 px-4 py-2 rounded-lg">
+                        About Me
+                    </a>
+                    <a href="/certificates" class="text-gray-600 hover:text-gray-800 transition-colors duration-300 font-medium">
+                        <i class="fas fa-certificate mr-2"></i>Certificates
+                    </a>
+                    <a href="/contact" class="text-gray-600 hover:text-gray-800 transition-colors duration-300 font-medium">
+                        <i class="fas fa-envelope mr-2"></i>Contact
+                    </a>
+                </div>
+                <div class="text-gray-600 font-light">
+                    <i class="fas fa-user mr-2"></i>My Journey
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex h-screen">
+        <!-- Left Content Area (About Me title, main description, and timeline) -->
+        <div class="flex-grow flex flex-col justify-between px-16 py-16">
+            <!-- Top part: About Me Title -->
+            <div class="mb-auto">
+                <h1 class="text-4xl font-light text-gray-800 text-left">About Me</h1>
+            </div>
+
+            <!-- Middle part: Main Description -->
+            <div id="content-area" class="text-center max-w-2xl mx-auto">
+                <div id="content-text" class="content-fade">
+                    <p id="content-description" class="text-xl text-gray-800 leading-relaxed">
+                        I was born, marking the start of my journey through life and technology.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bottom part: Timeline -->
+            <div class="mt-auto w-full">
+                <div class="relative max-w-2xl mx-auto">
+                    <!-- Timeline Track -->
+                    <div class="timeline-track h-1 w-full absolute top-1/2 transform -translate-y-1/2"></div>
+                    
+                    <!-- Active Marker (the green circle) -->
+                    <div id="active-marker" class="absolute top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-3 h-3 bg-green-400 rounded-full border-2 border-gray-600 z-20 transition-all duration-300" style="left: 0%;"></div>
+                    <!-- Active Year Label (below the marker) -->
+                    <div id="active-year-label" class="absolute top-1/2 transform translate-y-full -translate-x-1/2 text-sm font-medium text-gray-800 mt-2 z-20" style="left: 0%;">2004</div>
+                    
+                    <!-- Timeline Items -->
+                    <div class="flex justify-between items-center relative z-10">
+                        {% for item in timeline_data %}
+                        <div class="timeline-item flex flex-col items-center cursor-pointer group" 
+                             data-year="{{ item.year }}" 
+                             data-description="{{ item.description }}"
+                             data-title="{{ item.title }}"
+                             data-context="{{ item.context | join('||') }}"
+                             data-impact="{{ item.impact }}"
+                             data-index="{{ loop.index0 }}">
+                            
+                            <!-- Year Marker -->
+                            <div class="w-3 h-3 bg-white border-2 border-gray-400 rounded-full group-hover:border-green-400 group-hover:scale-110 transition-all duration-300"></div>
+                            <!-- Year Label -->
+                            <div class="text-sm font-medium text-gray-500 mt-2 group-hover:text-gray-700 transition-colors duration-300">{{ item.year }}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="text-center text-gray-500 text-sm mt-8">Scrub the timeline</div>
+            </div>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="w-96 bg-gray-100 p-10 border-l border-gray-200 flex-shrink-0 overflow-y-auto">
+            <!-- Timeline Details -->
+            <h2 class="text-xl font-semibold text-gray-800 mb-8">Timeline Details</h2>
+            
+            <!-- Current Event Details -->
+            <div class="space-y-8">
+                <!-- Year Badge -->
+                <div class="flex items-center space-x-4">
+                    <div class="w-4 h-4 bg-green-400 rounded-full border-2 border-gray-600"></div>
+                    <span id="detail-year" class="text-2xl font-light text-gray-800">2004</span>
+                </div>
+                
+                <!-- Event Title -->
+                <div>
+                    <h3 id="detail-title" class="text-lg font-medium text-gray-800 mb-4">The Beginning</h3>
+                    <p id="detail-description" class="text-gray-600 leading-relaxed">
+                        I was born, marking the start of my journey through life and technology.
+                    </p>
+                </div>
+                
+                <!-- Additional Details -->
+                <div class="border-t border-gray-200 pt-8">
+                    <h4 class="text-sm font-semibold text-gray-700 mb-4">Context</h4>
+                    <ul id="detail-context" class="list-disc list-inside text-gray-600 space-y-2">
+                        <li>Born in 2004</li>
+                        <li>Digital native generation</li>
+                        <li>Growing up with technology</li>
+                    </ul>
+                </div>
+
+                <div class="border-t border-gray-200 pt-8">
+                    <h4 class="text-sm font-semibold text-gray-700 mb-4">Impact</h4>
+                    <p id="detail-impact" class="text-gray-600 leading-relaxed">
+                        The foundation of my life story and the beginning of my relationship with technology.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const activeMarker = document.getElementById('active-marker');
+            const activeYearLabel = document.getElementById('active-year-label');
+            const timelineContainer = document.querySelector('.relative.max-w-2xl.mx-auto');
+            const contentDescription = document.getElementById('content-description');
+            const contentText = document.getElementById('content-text');
+
+            // Sidebar elements
+            const detailYear = document.getElementById('detail-year');
+            const detailTitle = document.getElementById('detail-title');
+            const detailDescription = document.getElementById('detail-description');
+            const detailContext = document.getElementById('detail-context');
+            const detailImpact = document.getElementById('detail-impact');
+            
+            let currentIndex = 0;
+            const totalItems = timelineItems.length;
+
+            function updateContent(description, title, context, impact) {
+                // Fade out
+                contentText.classList.add('fade-out');
+                
+                setTimeout(() => {
+                    // Update content
+                    contentDescription.textContent = description;
+                    
+                    // Update sidebar details
+                    detailTitle.textContent = title;
+                    detailDescription.textContent = description;
+                    
+                    // Clear previous context
+                    detailContext.innerHTML = '';
+                    context.split('||').forEach(item => {
+                        if (item.trim()) {
+                            const li = document.createElement('li');
+                            li.textContent = item.trim();
+                            detailContext.appendChild(li);
+                        }
+                    });
+
+                    detailImpact.textContent = impact;
+                    
+                    // Fade in
+                    contentText.classList.remove('fade-out');
+                    contentText.classList.add('fade-in');
+                }, 250);
+            }
+
+            function updateTimeline(index) {
+                currentIndex = index;
+                const percentage = (index / (totalItems - 1)) * 100;
+                activeMarker.style.left = percentage + '%';
+                activeYearLabel.style.left = percentage + '%';
+                
+                // Update active year label text
+                const activeItem = timelineItems[index];
+                activeYearLabel.textContent = activeItem.dataset.year;
+                detailYear.textContent = activeItem.dataset.year;
+                
+                // Update content
+                updateContent(activeItem.dataset.description, activeItem.dataset.title, activeItem.dataset.context, activeItem.dataset.impact);
+            }
+
+            // Initialize with the first item
+            updateTimeline(0);
+
+            // Click and hover on timeline items
+            timelineItems.forEach((item, index) => {
+                item.addEventListener('click', function() {
+                    updateTimeline(index);
+                });
+                
+                // Hover events
+                item.addEventListener('mouseenter', function() {
+                    updateTimeline(index);
+                });
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    updateTimeline(Math.min(currentIndex + 1, totalItems - 1));
+                } else if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    updateTimeline(Math.max(currentIndex - 1, 0));
+                }
+            });
+        });
+    </script>
+</body>
+</html>

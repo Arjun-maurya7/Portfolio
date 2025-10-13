@@ -1,0 +1,273 @@
+/* Custom styles for Arjun Maurya's Portfolio */
+
+/* Loading animation */
+.loading {
+    overflow: hidden;
+}
+
+.loading::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+.dark .loading::before {
+    background: #111827;
+}
+
+/* Keyboard navigation focus styles */
+.keyboard-navigation *:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.dark ::-webkit-scrollbar-track {
+    background: #374151;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Smooth transitions for theme changes */
+* {
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Custom animations */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.float-animation {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Gradient text effect */
+.gradient-text {
+    background: linear-gradient(45deg, #1f2937, #6b7280);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.dark .gradient-text {
+    background: linear-gradient(45deg, #f9fafb, #d1d5db);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Custom button hover effects */
+.btn-hover {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-hover:hover::before {
+    left: 100%;
+}
+
+/* Card hover effects */
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.dark .card-hover:hover {
+    box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
+}
+
+/* Typography improvements */
+.text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dark .text-shadow {
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+/* Custom form styles */
+.form-input {
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dark .form-input:focus {
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .mobile-padding {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .mobile-text {
+        font-size: 0.875rem;
+        line-height: 1.5;
+    }
+}
+
+/* Print styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .dark {
+        background: white !important;
+        color: black !important;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .hover-lift:hover {
+        border: 2px solid currentColor;
+    }
+}
+
+/* Focus visible for better accessibility */
+.focus-visible:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Custom selection color */
+::selection {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.dark ::selection {
+    background-color: #60a5fa;
+    color: #1f2937;
+}
+
+/* Avatar styling */
+.avatar-container {
+    position: relative;
+    display: inline-block;
+}
+
+.avatar-image {
+    transition: all 0.3s ease;
+    filter: grayscale(20%);
+}
+
+.avatar-image:hover {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+.avatar-badge {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Avatar glow effect */
+.avatar-glow {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.avatar-glow:hover {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+.dark .avatar-glow {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.dark .avatar-glow:hover {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+/* Floating animation for avatar badge */
+.floating-badge {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Responsive avatar sizing */
+@media (max-width: 768px) {
+    .avatar-container .w-64 {
+        width: 12rem;
+        height: 12rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .avatar-container .w-64 {
+        width: 10rem;
+        height: 10rem;
+    }
+}
