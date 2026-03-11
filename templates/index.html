@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -243,35 +242,37 @@
         </nav>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="home"
-            class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-            <div class="container mx-auto px-6 text-center">
-                <div class="fade-in-section">
-                    <h1 class="text-5xl md:text-7xl font-bold mb-6">
-                        Hi, I'm <span class="text-blue-600 dark:text-blue-400">Arjun</span>
-                    </h1>
-                    <div class="text-xl md:text-2xl mb-8 text-gray-600 dark:text-gray-300">
-                        <span class="typewriter-text">I love turning data into decisions and ideas into code.</span>
-                    </div>
-                    <p class="text-lg md:text-xl mb-12 text-gray-500 dark:text-gray-400 max-w-3xl mx-auto">
-                        Computer Science Engineering Student at Lovely Professional University<br>
-                        <span class="text-sm">Minor in Data Science</span>
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="#projects"
-                            class="bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-8 py-3 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-200 transition-colors hover-lift">
-                            View My Work
-                        </a>
-                        <a href="/contact"
-                            class="border-2 border-gray-900 dark:border-white px-8 py-3 rounded-lg hover:bg-gray-900 dark:hover:bg-white hover:text-white dark:hover:text-gray-900 transition-colors hover-lift">
-                            Get In Touch
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
+<main>
+
+<!-- ═══ HERO ══════════════════════════════════════════════════════ -->
+<section id="home">
+  <div class="container" style="text-align:center;">
+    <div class="fade-up">
+      <p class="section-label" style="margin-bottom:24px;">👋 Welcome to my portfolio</p>
+      <h1 class="hero-title">
+        Hi, I'm <span class="name-g">Arjun</span>
+      </h1>
+      <p class="hero-sub">
+        <span class="typewriter-text" data-text="I love turning data into decisions and ideas into code."></span>
+      </p>
+      <p class="hero-caption">
+        Computer Science Engineering Student at Lovely Professional University &nbsp;<br> Minor in Data Science
+      </p>
+      <div class="hero-btns" style="justify-content:center;">
+        <a href="/static/resume/Arjun_Maurya_Resume.pdf" download="Arjun_Maurya_Resume.pdf" class="btn btn-primary">
+          <i class="fas fa-file-arrow-down"></i> Download Resume
+        </a>
+        <a href="/contact" class="btn btn-outline">
+          <i class="fas fa-envelope"></i> Get In Touch
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">
+    <i class="fas fa-chevron-down"></i>
+    <span>Scroll</span>
+  </div>
+</section>
 
         <!-- About Section -->
         <section id="about" class="py-20 bg-white dark:bg-gray-900">
@@ -657,325 +658,247 @@
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="py-20 bg-gray-50 dark:bg-gray-800">
-            <div class="container mx-auto px-6">
-                <div class="max-w-6xl mx-auto">
-                    <div class="fade-in-section text-center mb-16">
-                        <h2 class="text-4xl md:text-5xl font-bold mb-6">Skills & Technologies</h2>
-                        <div class="w-24 h-1 bg-gray-900 dark:bg-white mx-auto mb-8"></div>
-                        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                            A comprehensive overview of my technical skills and the tools I use to bring ideas to life.
-                        </p>
-                    </div>
+<!-- ═══ SKILLS ════════════════════════════════════════════════════ -->
+<section id="skills" class="section" style="background: var(--surface);">
+  <div class="container">
+    <div class="fade-up text-center" style="margin-bottom:56px;">
+      <span class="section-label"><i class="fas fa-layer-group" style="font-size:0.65rem;"></i> Expertise</span>
+      <h2 class="section-title"><span class="g">Skills &amp; Technologies</span></h2>
+      <div class="divider"></div>
+      <p class="section-subtitle">A comprehensive overview of my technical skills and the tools I use to bring ideas to life.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="glass-card skill-card fade-up delay-1">
+        <div class="skill-icon">🐍</div>
+        <div class="skill-title">Python Ecosystem</div>
+        <ul class="skill-list">
+          <li>Core Programming (OOP, Functions, Loops)</li>
+          <li>Data Analysis: Pandas, NumPy, Matplotlib</li>
+          <li>Web Scraping: Selenium, Beautiful Soup</li>
+          <li>Machine Learning: Scikit-Learn</li>
+          <li>GUI Development: Tkinter, Pygame</li>
+          <li>Web Development: Flask</li>
+        </ul>
+      </div>
+      <div class="glass-card skill-card fade-up delay-2">
+        <div class="skill-icon">💻</div>
+        <div class="skill-title">Programming Languages</div>
+        <ul class="skill-list">
+          <li>C++ (Advanced)</li>
+          <li>Java (Object-Oriented Programming)</li>
+          <li>JavaScript (ES6+)</li>
+          <li>HTML5 &amp; CSS3</li>
+          <li>SQL (Database Queries)</li>
+        </ul>
+      </div>
+      <div class="glass-card skill-card fade-up delay-3">
+        <div class="skill-icon">🌐</div>
+        <div class="skill-title">Web Development</div>
+        <ul class="skill-list">
+          <li>React.js (Frontend Framework)</li>
+          <li>Node.js (Backend Runtime)</li>
+          <li>MongoDB (NoSQL Database)</li>
+          <li>Express.js (Web Framework)</li>
+          <li>RESTful APIs</li>
+          <li>Responsive Design</li>
+        </ul>
+      </div>
+      <div class="glass-card skill-card fade-up delay-1">
+        <div class="skill-icon">📊</div>
+        <div class="skill-title">Data Science &amp; Analytics</div>
+        <ul class="skill-list">
+          <li>Data Visualisation: Plotly, Seaborn</li>
+          <li>Statistical Analysis</li>
+          <li>Excel (Advanced Functions)</li>
+          <li>Power BI (Business Intelligence)</li>
+          <li>Data Cleaning &amp; Preprocessing</li>
+          <li>Predictive Modelling</li>
+        </ul>
+      </div>
+      <div class="glass-card skill-card fade-up delay-2">
+        <div class="skill-icon">🛠️</div>
+        <div class="skill-title">Tools &amp; Technologies</div>
+        <ul class="skill-list">
+          <li>Git &amp; GitHub (Version Control)</li>
+          <li>VS Code (Development Environment)</li>
+          <li>Jupyter Notebooks</li>
+          <li>Command Line Interface</li>
+          <li>API Development &amp; Testing</li>
+          <li>Database Design</li>
+        </ul>
+      </div>
+      <div class="glass-card skill-card fade-up delay-3">
+        <div class="skill-icon">🎮</div>
+        <div class="skill-title">Game Development</div>
+        <ul class="skill-list">
+          <li>Pygame (Python Game Development)</li>
+          <li>Game Logic Implementation</li>
+          <li>User Interface Design</li>
+          <li>Collision Detection</li>
+          <li>Game State Management</li>
+          <li>Projects: Blackjack, Pong, Snake</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Python Skills -->
-                        <div class="fade-in-section bg-white dark:bg-gray-900 rounded-lg p-6 hover-lift">
-                            <div class="text-3xl mb-4">🐍</div>
-                            <h3 class="text-xl font-semibold mb-4">Python</h3>
-                            <ul class="space-y-2 text-gray-600 dark:text-gray-300">
-                                <li>• Core Programming (OOP, Functions, Loops)</li>
-                                <li>• Data Analysis: Pandas, NumPy, Matplotlib</li>
-                                <li>• Web Scraping: Selenium, Beautiful Soup</li>
-                                <li>• Machine Learning: Scikit-Learn</li>
-                                <li>• GUI Development: Tkinter, Pygame</li>
-                                <li>• Web Development: Flask</li>
-                            </ul>
-                        </div>
+<!-- ═══ PROJECTS ══════════════════════════════════════════════════ -->
+<section id="projects" class="section">
+  <div class="container">
+    <div class="fade-up text-center" style="margin-bottom:56px;">
+      <span class="section-label"><i class="fas fa-rocket" style="font-size:0.65rem;"></i> My Work</span>
+      <h2 class="section-title"><span class="g">Featured Projects</span></h2>
+      <div class="divider"></div>
+      <p class="section-subtitle">A showcase of my best work — system programming, AI tools, and data analysis.</p>
+    </div>
+    <div class="projects-grid">
 
-                        <!-- Programming Languages -->
-                        <div class="fade-in-section bg-white dark:bg-gray-900 rounded-lg p-6 hover-lift">
-                            <div class="text-3xl mb-4">💻</div>
-                            <h3 class="text-xl font-semibold mb-4">Programming Languages</h3>
-                            <ul class="space-y-2 text-gray-600 dark:text-gray-300">
-                                <li>• C++ (Advanced)</li>
-                                <li>• Java (Object-Oriented Programming)</li>
-                                <li>• JavaScript (ES6+)</li>
-                                <li>• HTML5 & CSS3</li>
-                                <li>• SQL (Database Queries)</li>
-                            </ul>
-                        </div>
+      <!-- Project 1 -->
+      <div class="glass-card project-card fade-up delay-1">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px;">
+          <div class="project-icon" style="margin-bottom:0;">💾</div>
+          <span style="font-size:0.68rem; font-weight:700; color:var(--text-dim); letter-spacing:0.1em;">01</span>
+        </div>
+        <div class="project-title">Real-Time Memory Allocation Tracker</div>
+        <div class="project-desc">A system-level tool that visualises paging and segmentation in real time — built for the Operating Systems course (CSE306). Demonstrates core OS memory management concepts with live data.</div>
+        <div class="project-tags">
+          <span class="tag">C++</span>
+          <span class="tag">System Programming</span>
+          <span class="tag">OS Concepts</span>
+          <span class="tag">Visualisation</span>
+        </div>
+        <div class="project-links" style="display:flex; gap:10px; margin-top:auto; flex-wrap:wrap;">
+          <a href="https://github.com/Arjun-maurya7" target="_blank" rel="noopener" class="project-link">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+          <a href="#" class="project-link" style="color:var(--text-dim);">
+            <i class="fas fa-circle-dot" style="font-size:0.65rem;"></i> Live Demo
+          </a>
+        </div>
+      </div>
 
-                        <!-- Web Development -->
-                        <div class="fade-in-section bg-white dark:bg-gray-900 rounded-lg p-6 hover-lift">
-                            <div class="text-3xl mb-4">🌐</div>
-                            <h3 class="text-xl font-semibold mb-4">Web Development</h3>
-                            <ul class="space-y-2 text-gray-600 dark:text-gray-300">
-                                <li>• React.js (Frontend Framework)</li>
-                                <li>• Node.js (Backend Runtime)</li>
-                                <li>• MongoDB (NoSQL Database)</li>
-                                <li>• Express.js (Web Framework)</li>
-                                <li>• RESTful APIs</li>
-                                <li>• Responsive Design</li>
-                            </ul>
-                        </div>
+      <!-- Project 2 -->
+      <div class="glass-card project-card fade-up delay-2">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px;">
+          <div class="project-icon" style="margin-bottom:0;">✍️</div>
+          <span style="font-size:0.68rem; font-weight:700; color:var(--text-dim); letter-spacing:0.1em;">02</span>
+        </div>
+        <div class="project-title">AI Grammar Checker Tool</div>
+        <div class="project-desc">An intelligent web app that detects and suggests corrections for grammar and spelling errors in real time, helping users improve writing clarity and accuracy using NLP techniques.</div>
+        <div class="project-tags">
+          <span class="tag">JavaScript</span>
+          <span class="tag">NLP</span>
+          <span class="tag">Web App</span>
+          <span class="tag">AI</span>
+        </div>
+        <div class="project-links" style="display:flex; gap:10px; margin-top:auto; flex-wrap:wrap;">
+          <a href="https://github.com/Arjun-maurya7/AI-Grammer-Checker" target="_blank" rel="noopener" class="project-link">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+          <a href="https://github.com/Arjun-maurya7/AI-Grammer-Checker" target="_blank" rel="noopener" class="project-link" style="color:var(--text-dim);">
+            <i class="fas fa-arrow-up-right-from-square" style="font-size:0.75rem;"></i> Live Demo
+          </a>
+        </div>
+      </div>
 
-                        <!-- Data Science -->
-                        <div class="fade-in-section bg-white dark:bg-gray-900 rounded-lg p-6 hover-lift">
-                            <div class="text-3xl mb-4">📊</div>
-                            <h3 class="text-xl font-semibold mb-4">Data Science & Analytics</h3>
-                            <ul class="space-y-2 text-gray-600 dark:text-gray-300">
-                                <li>• Data Visualization: Plotly, Seaborn</li>
-                                <li>• Statistical Analysis</li>
-                                <li>• Excel (Advanced Functions)</li>
-                                <li>• Power BI (Business Intelligence)</li>
-                                <li>• Data Cleaning & Preprocessing</li>
-                                <li>• Predictive Modeling</li>
-                            </ul>
-                        </div>
+      <!-- Project 3 -->
+      <div class="glass-card project-card fade-up delay-3">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px;">
+          <div class="project-icon" style="margin-bottom:0;">📈</div>
+          <span style="font-size:0.68rem; font-weight:700; color:var(--text-dim); letter-spacing:0.1em;">03</span>
+        </div>
+        <div class="project-title">Data Analysis of IGNOAPS Beneficiaries</div>
+        <div class="project-desc">A comprehensive data science project (INT375) analysing pension scheme beneficiary data using EDA and visualisation to extract actionable insights for better policy decisions.</div>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Pandas</span>
+          <span class="tag">Data Analysis</span>
+          <span class="tag">EDA</span>
+        </div>
+        <div class="project-links" style="display:flex; gap:10px; margin-top:auto; flex-wrap:wrap;">
+          <a href="https://github.com/Arjun-maurya7/Data_Analysis_on_IGNOAPS" target="_blank" rel="noopener" class="project-link">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+          <a href="https://github.com/Arjun-maurya7/Data_Analysis_on_IGNOAPS" target="_blank" rel="noopener" class="project-link" style="color:var(--text-dim);">
+            <i class="fas fa-arrow-up-right-from-square" style="font-size:0.75rem;"></i> Live Demo
+          </a>
+        </div>
+      </div>
 
-                        <!-- Tools & Technologies -->
-                        <div class="fade-in-section bg-white dark:bg-gray-900 rounded-lg p-6 hover-lift">
-                            <div class="text-3xl mb-4">🛠️</div>
-                            <h3 class="text-xl font-semibold mb-4">Tools & Technologies</h3>
-                            <ul class="space-y-2 text-gray-600 dark:text-gray-300">
-                                <li>• Git & GitHub (Version Control)</li>
-                                <li>• VS Code (Development Environment)</li>
-                                <li>• Jupyter Notebooks</li>
-                                <li>• Command Line Interface</li>
-                                <li>• API Development & Testing</li>
-                                <li>• Database Design</li>
-                            </ul>
-                        </div>
+    </div>
+  </div>
+</section>
 
-                        <!-- Game Development -->
-                        <div class="fade-in-section bg-white dark:bg-gray-900 rounded-lg p-6 hover-lift">
-                            <div class="text-3xl mb-4">🎮</div>
-                            <h3 class="text-xl font-semibold mb-4">Game Development</h3>
-                            <ul class="space-y-2 text-gray-600 dark:text-gray-300">
-                                <li>• Pygame (Python Game Development)</li>
-                                <li>• Game Logic Implementation</li>
-                                <li>• User Interface Design</li>
-                                <li>• Collision Detection</li>
-                                <li>• Game State Management</li>
-                                <li>• Projects: Blackjack, Pong, Snake</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="py-20 bg-white dark:bg-gray-900">
-            <div class="container mx-auto px-6">
-                <div class="max-w-6xl mx-auto">
-                    <div class="fade-in-section text-center mb-16">
-                        <h2 class="text-4xl md:text-5xl font-bold mb-6">Featured Projects</h2>
-                        <div class="w-24 h-1 bg-gray-900 dark:bg-white mx-auto mb-8"></div>
-                        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                            A showcase of my recent work, demonstrating my skills in system programming, web
-                            development, and data analysis.
-                        </p>
-                    </div>
 
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Project 1 -->
-                        <div class="fade-in-section bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden hover-lift">
-                            <div class="p-6">
-                                <div class="text-3xl mb-4">💾</div>
-                                <h3 class="text-xl font-semibold mb-3">Real-Time Memory Allocation Tracker</h3>
-                                <p class="text-gray-600 dark:text-gray-300 mb-4">
-                                    A comprehensive system that visualizes paging and segmentation in operating systems,
-                                    providing real-time insights into memory management processes.
-                                </p>
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">C++</span>
-                                    <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">System
-                                        Programming</span>
-                                    <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">OS
-                                        Concepts</span>
-                                </div>
-                                <a href="https://github.com/Arjun-maurya7"
-                                    class="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
-                                    View Project →
-                                </a>
-                            </div>
-                        </div>
 
-                        <!-- Project 2 -->
-                        <div class="fade-in-section bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden hover-lift">
-                            <div class="p-6">
-                                <div class="text-3xl mb-4">✍️</div>
-                                <h3 class="text-xl font-semibold mb-3">Grammar Checker Tool</h3>
-                                <p class="text-gray-600 dark:text-gray-300 mb-4">
-                                    An intelligent tool that detects and corrects grammar and spelling errors in text,
-                                    helping users improve their writing quality and accuracy.
-                                </p>
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    <span
-                                        class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">JavaScript</span>
-                                    <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">NLP</span>
-                                    <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Web
-                                        App</span>
-                                </div>
-                                <a href="https://github.com/Arjun-maurya7/AI-Grammer-Checker"
-                                    class="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
-                                    View Project →
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Project 3 -->
-                        <div class="fade-in-section bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden hover-lift">
-                            <div class="p-6">
-                                <div class="text-3xl mb-4">📈</div>
-                                <h3 class="text-xl font-semibold mb-3">Data Analysis of IGNOAPS Beneficiaries</h3>
-                                <p class="text-gray-600 dark:text-gray-300 mb-4">
-                                    A comprehensive data science project analyzing pension scheme data to extract
-                                    meaningful
-                                    insights and patterns for better policy decisions.
-                                </p>
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    <span
-                                        class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Python</span>
-                                    <span
-                                        class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Pandas</span>
-                                    <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Data
-                                        Analysis</span>
-                                </div>
-                                <a href="https://github.com/Arjun-maurya7/Data_Analysis_on_IGNOAPS"
-                                    class="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
-                                    View Project →
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Certificates Section -->
-        <section id="certificates" class="py-20 bg-white dark:bg-gray-900">
-            <div class="container mx-auto px-6">
-                <div class="max-w-6xl mx-auto">
-                    <div class="fade-in-section text-center mb-16">
-                        <h2 class="text-4xl md:text-5xl font-bold mb-6">Certificates & Achievements</h2>
-                        <div class="w-24 h-1 bg-gray-900 dark:bg-white mx-auto mb-8"></div>
-                        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                            A showcase of my completed courses and certifications that demonstrate my commitment to
-                            continuous learning.
-                        </p>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Certificate 1 -->
-                        <div class="fade-in-section bg-gray-50 dark:bg-gray-800 rounded-lg p-6 hover-lift">
-                            <div class="text-3xl mb-4">🌐</div>
-                            <h3 class="text-xl font-semibold mb-3">Computer Networking</h3>
-                            <p class="text-gray-600 dark:text-gray-300 mb-4">
-                                Google via Coursera - The Bits and Bytes of Computer Networking
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span
-                                    class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Networking</span>
-                                <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Cloud</span>
-                                <span
-                                    class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Protocols</span>
-                            </div>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">2024 • 40+ hours</p>
-                        </div>
-
-                        <!-- Certificate 2 -->
-                        <div class="fade-in-section bg-gray-50 dark:bg-gray-800 rounded-lg p-6 hover-lift">
-                            <div class="text-3xl mb-4">⚡</div>
-                            <h3 class="text-xl font-semibold mb-3">Digital Systems</h3>
-                            <p class="text-gray-600 dark:text-gray-300 mb-4">
-                                Universitat Autònoma de Barcelona - From Logic Gates to Processors
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span
-                                    class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Electronics</span>
-                                <span
-                                    class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Architecture</span>
-                                <span
-                                    class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Processors</span>
-                            </div>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">2024 • 40 hours</p>
-                        </div>
-
-                        <!-- Certificate 3 -->
-                        <div class="fade-in-section bg-gray-50 dark:bg-gray-800 rounded-lg p-6 hover-lift">
-                            <div class="text-3xl mb-4">💻</div>
-                            <h3 class="text-xl font-semibold mb-3">Front-End Development</h3>
-                            <p class="text-gray-600 dark:text-gray-300 mb-4">
-                                Gokboru Tech Pvt. Ltd. - Web Development Training
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span
-                                    class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">HTML/CSS</span>
-                                <span
-                                    class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">JavaScript</span>
-                                <span
-                                    class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Responsive</span>
-                            </div>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">2025 • 6 weeks</p>
-                        </div>
-
-                        <!-- Certificate 4 -->
-                        <div class="fade-in-section bg-gray-50 dark:bg-gray-800 rounded-lg p-6 hover-lift">
-                            <div class="text-3xl mb-4">🤖</div>
-                            <h3 class="text-xl font-semibold mb-3">AI Essentials</h3>
-                            <p class="text-gray-600 dark:text-gray-300 mb-4">
-                                Udemy - ChatGPT Made Easy: AI Essentials for Beginners
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">AI</span>
-                                <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">ChatGPT</span>
-                                <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">NLP</span>
-                            </div>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">2025 • Self-paced</p>
-                        </div>
-
-                        <!-- Certificate 5 -->
-                        <div class="fade-in-section bg-gray-50 dark:bg-gray-800 rounded-lg p-6 hover-lift">
-                            <div class="text-3xl mb-4">🎨</div>
-                            <h3 class="text-xl font-semibold mb-3">Generative AI</h3>
-                            <p class="text-gray-600 dark:text-gray-300 mb-4">
-                                Udemy - Master Generative AI & AI Tools (ChatGPT & More)
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Generative
-                                    AI</span>
-                                <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">DALL·E</span>
-                                <span
-                                    class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Midjourney</span>
-                            </div>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">2025 • Self-paced</p>
-                        </div>
-
-                        <!-- Certificate 6 -->
-                        <div class="fade-in-section bg-gray-50 dark:bg-gray-800 rounded-lg p-6 hover-lift">
-                            <div class="text-3xl mb-4">🛠️</div>
-                            <h3 class="text-xl font-semibold mb-3">No-Code AI Apps</h3>
-                            <p class="text-gray-600 dark:text-gray-300 mb-4">
-                                Udemy - Build Generative AI Apps with No-Code Tools
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">No-Code</span>
-                                <span class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">AI Apps</span>
-                                <span
-                                    class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">Automation</span>
-                            </div>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">2025 • Self-paced</p>
-                        </div>
-                    </div>
-
-                    <!-- View All Certificates Button -->
-                    <div class="text-center mt-12">
-                        <a href="/certificates"
-                            class="inline-flex items-center bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-8 py-3 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-200 transition-colors hover-lift">
-                            View All Certificates
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                                </path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- ═══ CERTIFICATES ══════════════════════════════════════════════ -->
+<section id="certificates" class="section" style="background: var(--surface);">
+  <div class="container">
+    <div class="fade-up text-center" style="margin-bottom:56px;">
+      <span class="section-label"><i class="fas fa-award" style="font-size:0.65rem;"></i> Achievements</span>
+      <h2 class="section-title"><span class="g">Certificates &amp; Achievements</span></h2>
+      <div class="divider"></div>
+      <p class="section-subtitle">A showcase of my completed courses and certifications demonstrating my commitment to continuous learning.</p>
+    </div>
+    <div class="certs-grid">
+      <div class="glass-card cert-mini fade-up delay-1">
+        <div class="cert-mini-header">
+          <div class="cert-mini-icon">🌐</div>
+          <div class="cert-mini-year">2024</div>
+        </div>
+        <div class="cert-mini-title">The Bits &amp; Bytes of Computer Networking</div>
+        <div class="cert-mini-provider">Google via Coursera &nbsp;·&nbsp; 40+ hrs</div>
+      </div>
+      <div class="glass-card cert-mini fade-up delay-2">
+        <div class="cert-mini-header">
+          <div class="cert-mini-icon">⚡</div>
+          <div class="cert-mini-year">2024</div>
+        </div>
+        <div class="cert-mini-title">Digital Systems: From Logic Gates to Processors</div>
+        <div class="cert-mini-provider">UAB via Coursera &nbsp;·&nbsp; 40 hrs</div>
+      </div>
+      <div class="glass-card cert-mini fade-up delay-3">
+        <div class="cert-mini-header">
+          <div class="cert-mini-icon">💻</div>
+          <div class="cert-mini-year">2025</div>
+        </div>
+        <div class="cert-mini-title">Front-End Web Development Training</div>
+        <div class="cert-mini-provider">Gokboru Tech Pvt. Ltd. &nbsp;·&nbsp; 6 weeks</div>
+      </div>
+      <div class="glass-card cert-mini fade-up delay-1">
+        <div class="cert-mini-header">
+          <div class="cert-mini-icon">🤖</div>
+          <div class="cert-mini-year">2025</div>
+        </div>
+        <div class="cert-mini-title">ChatGPT Made Easy: AI Essentials for Beginners</div>
+        <div class="cert-mini-provider">Udemy &nbsp;·&nbsp; Self-paced</div>
+      </div>
+      <div class="glass-card cert-mini fade-up delay-2">
+        <div class="cert-mini-header">
+          <div class="cert-mini-icon">🎨</div>
+          <div class="cert-mini-year">2025</div>
+        </div>
+        <div class="cert-mini-title">Master Generative AI &amp; AI Tools</div>
+        <div class="cert-mini-provider">Udemy &nbsp;·&nbsp; Self-paced</div>
+      </div>
+      <div class="glass-card cert-mini fade-up delay-3">
+        <div class="cert-mini-header">
+          <div class="cert-mini-icon">🛠️</div>
+          <div class="cert-mini-year">2025</div>
+        </div>
+        <div class="cert-mini-title">Build Generative AI Apps with No-Code Tools</div>
+        <div class="cert-mini-provider">Udemy &nbsp;·&nbsp; Self-paced</div>
+      </div>
+    </div>
+    <div class="fade-up text-center" style="margin-top:44px;">
+      <a href="/certificates" class="btn btn-primary">
+        <i class="fas fa-certificate"></i> View All Certificates
+      </a>
+    </div>
+  </div>
+</section>
 
         <!-- Contact Section -->
         <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-800">
@@ -1059,112 +982,17 @@
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 dark:bg-black text-white py-8">
-        <div class="container mx-auto px-6 text-center">
-            <p class="text-gray-400">Designed & Built by Arjun Maurya © 2025</p>
-        </div>
-    </footer>
+<!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p>Designed &amp; Built by <span>Arjun Maurya</span> &nbsp;·&nbsp; © 2025</p>
+    <div class="footer-links">
+      <a href="https://github.com/Arjun-maurya7" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://www.linkedin.com/in/maurya-arjun/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+    </div>
+  </div>
+</footer>
 
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-
-    <!-- Timeline Interactive Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const timelineItems = document.querySelectorAll('.timeline-item');
-            const activeMarker = document.getElementById('active-marker');
-            const activeYearLabel = document.getElementById('active-year-label');
-            const timelineDescription = document.getElementById('timeline-description');
-
-            // Sidebar elements
-            const detailYear = document.getElementById('detail-year');
-            const detailTitle = document.getElementById('detail-title');
-            const detailDescription = document.getElementById('detail-description');
-            const detailContext = document.getElementById('detail-context');
-            const detailImpact = document.getElementById('detail-impact');
-
-            let currentIndex = 0;
-            const totalItems = timelineItems.length;
-
-            function updateContent(description, title, context, impact) {
-                // Add fade out animation to main description
-                timelineDescription.style.opacity = '0';
-                timelineDescription.style.transform = 'translateY(20px)';
-
-                // After fade out, update content and fade in
-                setTimeout(() => {
-                    timelineDescription.textContent = description;
-                    timelineDescription.style.opacity = '1';
-                    timelineDescription.style.transform = 'translateY(0)';
-                }, 250);
-
-                // Update sidebar details
-                detailTitle.textContent = title;
-                detailDescription.textContent = description;
-
-                // Clear previous context
-                detailContext.innerHTML = '';
-                context.split('||').forEach(item => {
-                    if (item.trim()) {
-                        const li = document.createElement('li');
-                        li.textContent = item.trim();
-                        detailContext.appendChild(li);
-                    }
-                });
-
-                detailImpact.textContent = impact;
-            }
-
-            function updateTimeline(index) {
-                currentIndex = index;
-                const percentage = (index / (totalItems - 1)) * 100;
-
-                // Smooth marker movement
-                activeMarker.style.left = percentage + '%';
-                activeYearLabel.style.left = percentage + '%';
-
-                // Update active year label text with animation
-                const activeItem = timelineItems[index];
-                activeYearLabel.style.opacity = '0';
-                setTimeout(() => {
-                    activeYearLabel.textContent = activeItem.dataset.year;
-                    activeYearLabel.style.opacity = '1';
-                }, 150);
-
-                // Update sidebar year
-                detailYear.textContent = activeItem.dataset.year;
-
-                // Update content with animation
-                updateContent(activeItem.dataset.description, activeItem.dataset.title, activeItem.dataset.context, activeItem.dataset.impact);
-            }
-
-            // Initialize with the first item
-            updateTimeline(0);
-
-            // Click and hover on timeline items
-            timelineItems.forEach((item, index) => {
-                item.addEventListener('click', function () {
-                    updateTimeline(index);
-                });
-
-                // Hover events
-                item.addEventListener('mouseenter', function () {
-                    updateTimeline(index);
-                });
-            });
-
-            // Keyboard navigation
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'ArrowRight') {
-                    e.preventDefault();
-                    updateTimeline(Math.min(currentIndex + 1, totalItems - 1));
-                } else if (e.key === 'ArrowLeft') {
-                    e.preventDefault();
-                    updateTimeline(Math.max(currentIndex - 1, 0));
-                }
-            });
-        });
-    </script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
-
 </html>
