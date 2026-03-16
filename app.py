@@ -1,4 +1,6 @@
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, request, jsonify
+import smtplib
+from email.mime.text import MIMEText
 
 app = Flask(__name__)
 
@@ -100,6 +102,37 @@ def contact():
 @app.route('/certificates')
 def certificates():
     return render_template('certificates.html', certificates_data=certificates_data)
+
+@app.route('/send_message', methods=['POST'])
+def send_message():
+    data = request.get_json()
+    if not data:
+        return jsonify({"status": "error", "message": "No data provided"}), 400
+        
+    name = data.get('name', 'Unknown')
+    email = data.get('email', 'No email')
+    message = data.get('message', '')
+
+    message_body = f"Name: {name}\nEmail: {email}\nMessage:\n{message}"
+
+    my_email = "arjunpytest@gmail.com"
+    password = "sjzahrdgzstrmlnj"
+    
+    msg = MIMEText(message_body, "plain", "utf-8")
+    msg["Subject"] = f"New Portfolio Contact from {name}"
+    msg["From"] = my_email
+    msg["To"] = "arjunmaurya9026@gmail.com"
+
+    try:
+        connection = smtplib.SMTP("smtp.gmail.com", port=587)
+        connection.starttls()
+        connection.login(user=my_email, password=password)
+        connection.sendmail(my_email, "arjunmaurya9026@gmail.com", msg.as_string())
+        connection.close()
+        return jsonify({"status": "success"})
+    except Exception as e:
+        print(f"Error sending email: {e}")
+        return jsonify({"status": "error", "message": str(e)}), 500
 
 
 if __name__ == '__main__':

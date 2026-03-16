@@ -378,8 +378,10 @@
       <a href="#home" class="nav-brand" aria-label="Home">A</a>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
         <a href="#projects" class="nav-link">Projects</a>
-        <a href="/certificates" class="nav-link">Certificates</a>
+        <a href="#certifications" class="nav-link">Certificates</a>
         <a href="/contact" class="nav-link nav-cta">Contact Me</a>
       </nav>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -389,8 +391,10 @@
   </header>
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
     <a href="#home" class="nav-link">Home</a>
+    <a href="#about" class="nav-link">About</a>
+    <a href="#skills" class="nav-link">Skills</a>
     <a href="#projects" class="nav-link">Projects</a>
-    <a href="/certificates" class="nav-link">Certificates</a>
+    <a href="#certifications" class="nav-link">Certificates</a>
     <a href="/contact" class="nav-link nav-cta">Contact Me</a>
   </nav>
 
@@ -462,6 +466,58 @@
               <img src="{{ url_for('static', filename='images/My_image.png') }}" alt="Arjun Maurya" width="300"
                 height="300" style="width:300px; height:300px; object-fit:cover; object-position:center;">
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ EDUCATION ═════════════════════════════════════════════════ -->
+    <section id="education" class="section">
+      <div class="container">
+        <div class="fade-up text-center" style="margin-bottom:56px;">
+          <span class="section-label"><i class="fas fa-graduation-cap" style="font-size:0.65rem;"></i> Education</span>
+          <h2 class="section-title"><span class="g">My History</span></h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">My academic background and qualifications.</p>
+        </div>
+
+        <div class="fade-up" style="max-width:800px; margin:0 auto;">
+          <div style="display:flex; flex-direction:column; gap:0;">
+            
+            <!-- Education Item 1 -->
+            <div style="padding:28px 0; border-bottom:1px solid var(--border);">
+              <h3 style="font-size:1.35rem; font-weight:700; color:var(--text); margin-bottom:8px;">B.Tech – Computer Science and Engineering</h3>
+              <p style="font-size:0.95rem; color:var(--text-muted); margin-bottom:4px;">
+                Lovely Professional University (Phagwara, Punjab)
+              </p>
+              <div style="font-size:0.85rem; color:var(--text-dim); display:flex; align-items:center; gap:12px;">
+                <span><i class="fas fa-star" style="color:var(--accent); font-size:0.75rem; margin-right:4px;"></i> CGPA: 7.7</span>
+                <span><i class="fas fa-calendar-alt" style="color:var(--accent); font-size:0.75rem; margin-right:4px;"></i> Since August 2023</span>
+              </div>
+            </div>
+
+            <!-- Education Item 2 -->
+            <div style="padding:28px 0; border-bottom:1px solid var(--border);">
+              <h3 style="font-size:1.35rem; font-weight:700; color:var(--text); margin-bottom:8px;">Intermediate</h3>
+              <p style="font-size:0.95rem; color:var(--text-muted); margin-bottom:4px;">
+                SNS Nation Public School (Varanasi, Uttar Pradesh)
+              </p>
+              <div style="font-size:0.85rem; color:var(--text-dim); display:flex; align-items:center; gap:12px;">
+                <span><i class="fas fa-calendar-alt" style="color:var(--accent); font-size:0.75rem; margin-right:4px;"></i> Apr 2020 – Mar 2021</span>
+              </div>
+            </div>
+
+            <!-- Education Item 3 -->
+            <div style="padding:28px 0;">
+              <h3 style="font-size:1.35rem; font-weight:700; color:var(--text); margin-bottom:8px;">10th Standard (Matriculation)</h3>
+              <p style="font-size:0.95rem; color:var(--text-muted); margin-bottom:4px;">
+                Kachhwa Christian School (Mirzapur, Uttar Pradesh)
+              </p>
+              <div style="font-size:0.85rem; color:var(--text-dim); display:flex; align-items:center; gap:12px;">
+                <span><i class="fas fa-calendar-alt" style="color:var(--accent); font-size:0.75rem; margin-right:4px;"></i> Apr 2018 – Mar 2020</span>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -896,9 +952,9 @@
           <div class="divider"></div>
           <p class="section-subtitle">Open to ML internships, collaborations, and freelance data science projects.</p>
         </div>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px;">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:48px; align-items:stretch;">
           <!-- Form -->
-          <div class="glass-card fade-up" style="padding:36px;">
+          <div class="glass-card fade-up" style="padding:36px; display:flex; flex-direction:column; justify-content:space-between; height:100%;">
             <p style="font-size:1rem; font-weight:700; color:var(--text); margin-bottom:24px;">Send me a message</p>
             <form class="contact-form">
               <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
@@ -922,8 +978,8 @@
             </form>
           </div>
           <!-- Info -->
-          <div class="fade-up delay-2">
-            <div class="glass-card" style="padding:36px;">
+          <div class="fade-up delay-2" style="display:flex; flex-direction:column; height: 100%;">
+            <div class="glass-card" style="padding:36px; flex:1; display:flex; flex-direction:column; justify-content:center;">
               <p style="font-size:1rem; font-weight:700; color:var(--text); margin-bottom:8px;">Contact Information</p>
               <p style="font-size:0.875rem; color:var(--text-muted); margin-bottom:28px;">I respond within 24 hours.
                 Let's build something great together.</p>

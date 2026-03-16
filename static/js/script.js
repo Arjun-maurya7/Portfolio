@@ -115,25 +115,52 @@ function initScrollSpy() {
 
 // ── Contact form ─────────────────────────────────────────────────
 function initContactForm() {
-    const form = document.querySelector('.contact-form');
-    if (!form) return;
+    const forms = document.querySelectorAll('.contact-form');
+    if (!forms.length) return;
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const btn = form.querySelector('button[type="submit"]');
-        const orig = btn.textContent;
-        btn.textContent = 'Sending…';
-        btn.disabled = true;
-        setTimeout(() => {
-            btn.textContent = '✓ Sent! I\'ll reply soon.';
-            btn.style.background = '#059669';
-            form.reset();
+    forms.forEach(form => {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('button[type="submit"]');
+            const orig = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
+            btn.disabled = true;
+
+            const name = form.querySelector('input[type="text"]').value;
+            const email = form.querySelector('input[type="email"]').value;
+            const message = form.querySelector('textarea').value;
+
+            try {
+                const res = await fetch('/send_message', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, message })
+                });
+
+                const data = await res.json();
+
+                if (res.ok && data.status === 'success') {
+                    btn.innerHTML = '<i class="fas fa-check"></i> Sent! I\'ll reply soon.';
+                    btn.style.background = '#059669'; // Green success color
+                    form.reset();
+                } else {
+                    btn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error sending message';
+                    btn.style.background = '#e53e3e'; // Red error color
+                    console.error('Server error:', data.message);
+                }
+            } catch (err) {
+                btn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error sending message';
+                btn.style.background = '#e53e3e';
+                console.error('Network error:', err);
+            }
+
+            // Reset button to default state after 4 seconds
             setTimeout(() => {
-                btn.textContent = orig;
+                btn.innerHTML = orig;
                 btn.style.background = '';
                 btn.disabled = false;
             }, 4000);
-        }, 1600);
+        });
     });
 }
 
