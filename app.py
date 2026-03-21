@@ -103,6 +103,10 @@ def contact():
 def certificates():
     return render_template('certificates.html', certificates_data=certificates_data)
 
+@app.route('/synthetic')
+def synthetic():
+    return render_template('synthetic_portfolio.html')
+
 @app.route('/send_message', methods=['POST'])
 def send_message():
     data = request.get_json()

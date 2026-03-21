@@ -8,12 +8,13 @@
     content="Arjun Maurya — ML & Data Science student at LPU. Python, TensorFlow, Scikit-learn, Data Analysis.">
   <title>Arjun Maurya — ML & Data Science Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <script>
-    (function() {
+    (function () {
       const savedTheme = localStorage.getItem('portfolio-theme');
       if (savedTheme === 'light') {
         document.documentElement.dataset.theme = 'light';
@@ -29,6 +30,10 @@
       justify-content: center;
       padding-top: var(--nav-h);
       position: relative;
+      background:
+        radial-gradient(ellipse 70% 55% at 15% 30%, rgba(99, 102, 241, 0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 50% at 85% 75%, rgba(165, 180, 252, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 50% 10%, rgba(192, 132, 252, 0.08) 0%, transparent 55%);
     }
 
     .hero-title {
@@ -49,8 +54,13 @@
     }
 
     @keyframes gradient-shift {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 100% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+
+      100% {
+        background-position: 100% 50%;
+      }
     }
 
     .hero-tech-pills {
@@ -143,24 +153,38 @@
     /* ── Skills ── */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
 
     .skill-card {
       padding: 28px;
+      transition: transform 0.3s ease, border-color 0.3s ease;
     }
 
-    .skill-icon {
-      font-size: 2rem;
-      margin-bottom: 14px;
+    .skill-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+    }
+
+    .skill-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--accent-dim);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 18px;
     }
 
     .skill-title {
       font-size: 1rem;
       font-weight: 700;
       color: var(--text);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     .skill-list {
@@ -170,18 +194,23 @@
     .skill-list li {
       font-size: 0.865rem;
       color: var(--text-muted);
-      padding: 5px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 8px;
     }
 
+    .skill-list li:last-child {
+      border-bottom: none;
+    }
+
     .skill-list li::before {
-      content: '·';
+      content: '→';
       color: var(--accent);
-      font-size: 1.2rem;
-      line-height: 0;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
     }
 
     /* ── Projects ── */
@@ -208,12 +237,35 @@
       position: relative;
     }
 
-    .thumb-1 { background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(21, 128, 61, 0.05)); color: rgba(74, 222, 128, 0.9); }
-    .thumb-2 { background: linear-gradient(135deg, rgba(234, 179, 8, 0.1), rgba(161, 98, 7, 0.05)); color: rgba(250, 204, 21, 0.9); }
-    .thumb-3 { background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(29, 78, 216, 0.05)); color: rgba(96, 165, 250, 0.9); }
-    .thumb-4 { background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(126, 34, 206, 0.05)); color: rgba(192, 132, 252, 0.9); }
-    .thumb-5 { background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(190, 24, 93, 0.05)); color: rgba(244, 114, 182, 0.9); }
-    .thumb-6 { background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(3, 105, 161, 0.05)); color: rgba(56, 189, 248, 0.9); }
+    .thumb-1 {
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(21, 128, 61, 0.05));
+      color: rgba(74, 222, 128, 0.9);
+    }
+
+    .thumb-2 {
+      background: linear-gradient(135deg, rgba(234, 179, 8, 0.1), rgba(161, 98, 7, 0.05));
+      color: rgba(250, 204, 21, 0.9);
+    }
+
+    .thumb-3 {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(29, 78, 216, 0.05));
+      color: rgba(96, 165, 250, 0.9);
+    }
+
+    .thumb-4 {
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(126, 34, 206, 0.05));
+      color: rgba(192, 132, 252, 0.9);
+    }
+
+    .thumb-5 {
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(190, 24, 93, 0.05));
+      color: rgba(244, 114, 182, 0.9);
+    }
+
+    .thumb-6 {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(3, 105, 161, 0.05));
+      color: rgba(56, 189, 248, 0.9);
+    }
 
     .project-content {
       padding: 24px 28px 28px 28px;
@@ -297,32 +349,61 @@
     /* ── Problem Solving ── */
     .ps-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 24px;
     }
 
     .ps-card {
-      padding: 32px;
+      padding: 40px 32px;
       text-align: center;
+      transition: border-color 0.3s;
     }
 
-    .ps-logo {
-      font-size: 2.8rem;
-      margin-bottom: 16px;
+    .ps-card:hover {
+      border-color: var(--accent);
     }
 
     .ps-platform {
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: var(--text);
-      margin-bottom: 18px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .ps-platform .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .ps-big-stat {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin: 16px 0 4px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .ps-big-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 28px;
     }
 
     .ps-badges {
       display: flex;
       flex-direction: column;
       gap: 10px;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
 
     .ps-badge {
@@ -330,31 +411,23 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      background: rgba(255, 255, 255, 0.04);
+      background: var(--surface-2, rgba(255, 255, 255, 0.04));
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
-      padding: 9px 16px;
+      padding: 10px 16px;
       font-size: 0.85rem;
       font-weight: 600;
       color: var(--text-muted);
     }
 
+    .ps-badge.alt {
+      background: var(--accent-alt-dim, rgba(242, 166, 35, 0.1));
+      border-color: var(--accent-alt-glow, rgba(242, 166, 35, 0.3));
+      color: var(--accent-alt);
+    }
+
     .ps-badge .stars {
       color: #f59e0b;
-    }
-
-    .ps-stat {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--accent-alt);
-      line-height: 1;
-    }
-
-    .ps-stat-label {
-      font-size: 0.78rem;
-      color: var(--text-dim);
-      margin-top: 4px;
-      margin-bottom: 20px;
     }
 
     /* ── Certifications ── */
@@ -430,7 +503,8 @@
         <a href="#projects" class="nav-link">Projects</a>
         <a href="#certifications" class="nav-link">Certificates</a>
         <a href="/contact" class="nav-link nav-cta">Contact Me</a>
-        <button id="theme-toggle" class="nav-link" aria-label="Toggle Theme" style="background:none; border:none; padding: 7px 12px; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+        <button id="theme-toggle" class="nav-link" aria-label="Toggle Theme"
+          style="background:none; border:none; padding: 7px 12px; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">
           <i class="fas fa-sun"></i>
         </button>
       </nav>
@@ -446,7 +520,8 @@
     <a href="#projects" class="nav-link">Projects</a>
     <a href="#certifications" class="nav-link">Certificates</a>
     <a href="/contact" class="nav-link nav-cta">Contact Me</a>
-    <button id="mobile-theme-toggle" class="nav-link" aria-label="Toggle Theme" style="background:none; border:none; padding: 13px 16px; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: flex-start; gap: 8px; text-align: left; width: 100%;">
+    <button id="mobile-theme-toggle" class="nav-link" aria-label="Toggle Theme"
+      style="background:none; border:none; padding: 13px 16px; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: flex-start; gap: 8px; text-align: left; width: 100%;">
       <i class="fas fa-sun"></i> Switch Theme
     </button>
   </nav>
@@ -465,8 +540,10 @@
             <span class="typewriter-text" data-text="I love turning data into decisions and ideas into code."></span>
           </p>
           <div class="hero-tech-pills">
-            <span class="hero-tech-pill"><i class="fas fa-brain" style="color: var(--accent-light); font-size: 1.1rem;"></i> Machine Learning</span>
-            <span class="hero-tech-pill"><i class="fas fa-chart-bar" style="color: #c084fc; font-size: 1.1rem;"></i> Data Science</span>
+            <span class="hero-tech-pill"><i class="fas fa-brain"
+                style="color: var(--accent-light); font-size: 1.1rem;"></i> Machine Learning</span>
+            <span class="hero-tech-pill"><i class="fas fa-chart-bar" style="color: #c084fc; font-size: 1.1rem;"></i>
+              Data Science</span>
           </div>
           <p class="hero-caption">
             Computer Science Engineering Student at Lovely Professional University &nbsp;<br> Minor in Data Science
@@ -490,22 +567,27 @@
     <!-- ═══ ABOUT ═════════════════════════════════════════════════════ -->
     <section id="about" class="section">
       <div class="container">
+        <div class="fade-up hv-a" style="margin-bottom:48px;">
+          <span class="num">01 · About</span>
+          <h2>Passionate Developer <br>&amp; AI Enthusiast</h2>
+          <p>Who I am and what drives me.</p>
+        </div>
         <div class="fade-up about-grid">
           <div>
-            <span class="section-label"><i class="fas fa-user" style="font-size:0.65rem;"></i> About Me</span>
-            <h2 class="section-title"><span class="g">Passionate Developer</span><br>&amp; AI Enthusiast</h2>
-            <div class="divider"></div>
             <p style="color:var(--text-muted); line-height:1.8; margin-bottom:14px; font-size:0.95rem;">
               I'm a Computer Science Engineering student at Lovely Professional University specializing in Data Science.
-              I am deeply passionate about extracting meaningful patterns from raw data and turning them into end-to-end intelligent systems.
+              I am deeply passionate about extracting meaningful patterns from raw data and turning them into end-to-end
+              intelligent systems.
             </p>
             <p style="color:var(--text-muted); line-height:1.8; margin-bottom:14px; font-size:0.95rem;">
-              My expertise covers the full machine learning lifecycle: data wrangling, feature engineering, model training
+              My expertise covers the full machine learning lifecycle: data wrangling, feature engineering, model
+              training
               (from CNNs to ensemble methods), and evaluation. But I don't just stop at the model — I bring my projects
               to life by deploying them via Flask REST APIs and building intuitive front-end interfaces using React.js.
             </p>
             <p style="color:var(--text-muted); line-height:1.8; font-size:0.95rem;">
-              Beyond development, I am a dedicated problem solver with a strong foundation in Data Structures &amp; Algorithms,
+              Beyond development, I am a dedicated problem solver with a strong foundation in Data Structures &amp;
+              Algorithms,
               backed by top ratings on HackerRank and a solid track record on LeetCode. I thrive at the intersection
               of AI, software engineering, and real-world problem-solving.
             </p>
@@ -531,25 +613,29 @@
     <!-- ═══ EDUCATION ═════════════════════════════════════════════════ -->
     <section id="education" class="section">
       <div class="container">
-        <div class="fade-up text-center" style="margin-bottom:56px;">
-          <span class="section-label"><i class="fas fa-graduation-cap" style="font-size:0.65rem;"></i> Education</span>
-          <h2 class="section-title"><span class="g">My History</span></h2>
-          <div class="divider"></div>
-          <p class="section-subtitle">My academic background and qualifications.</p>
+        <div class="fade-up hv-b">
+          <span class="ghost">EDUCATION</span>
+          <h2>Academic Background</h2>
+          <div class="hl"></div>
+          <p>My qualifications and institutions.</p>
         </div>
 
         <div class="fade-up" style="max-width:800px; margin:0 auto;">
           <div style="display:flex; flex-direction:column; gap:0;">
-            
+
             <!-- Education Item 1 -->
             <div style="padding:28px 0; border-bottom:1px solid var(--border);">
-              <h3 style="font-size:1.45rem; font-weight:800; color:var(--text); margin-bottom:8px;">B.Tech – Computer Science and Engineering</h3>
+              <h3 style="font-size:1.45rem; font-weight:800; color:var(--text); margin-bottom:8px;">B.Tech – Computer
+                Science and Engineering</h3>
               <p style="font-size:1.05rem; font-weight:600; color:var(--text); margin-bottom:8px;">
                 Lovely Professional University (Phagwara, Punjab)
               </p>
-              <div style="font-size:0.9rem; font-weight:500; color:var(--text-muted); display:flex; align-items:center; gap:12px;">
-                <span><i class="fas fa-star" style="color:var(--accent); font-size:0.8rem; margin-right:4px;"></i> CGPA: 7.7</span>
-                <span><i class="fas fa-calendar-alt" style="color:var(--accent); font-size:0.8rem; margin-right:4px;"></i> Since August 2023</span>
+              <div
+                style="font-size:0.9rem; font-weight:500; color:var(--text-muted); display:flex; align-items:center; gap:12px;">
+                <span><i class="fas fa-star" style="color:var(--accent); font-size:0.8rem; margin-right:4px;"></i> CGPA:
+                  7.7</span>
+                <span><i class="fas fa-calendar-alt"
+                    style="color:var(--accent); font-size:0.8rem; margin-right:4px;"></i> Since August 2023</span>
               </div>
             </div>
 
@@ -559,19 +645,24 @@
               <p style="font-size:1.05rem; font-weight:600; color:var(--text); margin-bottom:8px;">
                 SNS Nation Public School (Varanasi, Uttar Pradesh)
               </p>
-              <div style="font-size:0.9rem; font-weight:500; color:var(--text-muted); display:flex; align-items:center; gap:12px;">
-                <span><i class="fas fa-calendar-alt" style="color:var(--accent); font-size:0.8rem; margin-right:4px;"></i> Apr 2020 – Mar 2021</span>
+              <div
+                style="font-size:0.9rem; font-weight:500; color:var(--text-muted); display:flex; align-items:center; gap:12px;">
+                <span><i class="fas fa-calendar-alt"
+                    style="color:var(--accent); font-size:0.8rem; margin-right:4px;"></i> Apr 2020 – Mar 2021</span>
               </div>
             </div>
 
             <!-- Education Item 3 -->
             <div style="padding:28px 0;">
-              <h3 style="font-size:1.45rem; font-weight:800; color:var(--text); margin-bottom:8px;">10th Standard (Matriculation)</h3>
+              <h3 style="font-size:1.45rem; font-weight:800; color:var(--text); margin-bottom:8px;">10th Standard
+                (Matriculation)</h3>
               <p style="font-size:1.05rem; font-weight:600; color:var(--text); margin-bottom:8px;">
                 Kachhwa Christian School (Mirzapur, Uttar Pradesh)
               </p>
-              <div style="font-size:0.9rem; font-weight:500; color:var(--text-muted); display:flex; align-items:center; gap:12px;">
-                <span><i class="fas fa-calendar-alt" style="color:var(--accent); font-size:0.8rem; margin-right:4px;"></i> Apr 2018 – Mar 2020</span>
+              <div
+                style="font-size:0.9rem; font-weight:500; color:var(--text-muted); display:flex; align-items:center; gap:12px;">
+                <span><i class="fas fa-calendar-alt"
+                    style="color:var(--accent); font-size:0.8rem; margin-right:4px;"></i> Apr 2018 – Mar 2020</span>
               </div>
             </div>
 
@@ -583,27 +674,29 @@
     <!-- ═══ SKILLS ════════════════════════════════════════════════════ -->
     <section id="skills" class="section" style="background: var(--surface);">
       <div class="container">
-        <div class="fade-up text-center" style="margin-bottom:56px;">
-          <span class="section-label"><i class="fas fa-brain" style="font-size:0.65rem;"></i> Expertise</span>
-          <h2 class="section-title"><span class="g">Skills &amp; Technologies</span></h2>
-          <div class="divider"></div>
-          <p class="section-subtitle">My core technical stack — focused on machine learning, data science, and software
-            engineering.</p>
+        <div class="fade-up hv-a">
+          <span class="num">02 · Expertise</span>
+          <h2>Skills &amp; Technologies</h2>
+          <p>My core technical stack — focused on ML, data science, and engineering.</p>
         </div>
         <div class="skills-grid">
+
+          <!-- Card 1 -->
           <div class="glass-card skill-card fade-up delay-1">
-            <div class="skill-icon">🤖</div>
+            <div class="skill-icon-box"><i class="fas fa-robot"></i></div>
             <div class="skill-title">Machine Learning &amp; AI</div>
             <ul class="skill-list">
               <li>Supervised &amp; Unsupervised Learning</li>
               <li>CNN, Random Forest, Decision Trees</li>
-              <li>Model Evaluation (Accuracy, F1, Recall)</li>
               <li>TensorFlow / Keras</li>
               <li>Scikit-learn</li>
+              <li>Model Evaluation (F1, Recall, AUC)</li>
             </ul>
           </div>
+
+          <!-- Card 2 -->
           <div class="glass-card skill-card fade-up delay-2">
-            <div class="skill-icon">📊</div>
+            <div class="skill-icon-box"><i class="fas fa-chart-area"></i></div>
             <div class="skill-title">Data Science &amp; Analytics</div>
             <ul class="skill-list">
               <li>Exploratory Data Analysis (EDA)</li>
@@ -613,30 +706,36 @@
               <li>Power BI, Excel (Advanced)</li>
             </ul>
           </div>
+
+          <!-- Card 3 -->
           <div class="glass-card skill-card fade-up delay-3">
-            <div class="skill-icon">🐍</div>
+            <div class="skill-icon-box"><i class="fas fa-code"></i></div>
             <div class="skill-title">Programming</div>
             <ul class="skill-list">
               <li>Python (Primary)</li>
               <li>C / C++ (Systems)</li>
-              <li>SQL (MySQL, DBMS)</li>
+              <li>SQL — MySQL, DBMS</li>
               <li>JavaScript (ES6+)</li>
               <li>Data Structures &amp; Algorithms</li>
             </ul>
           </div>
+
+          <!-- Card 4 -->
           <div class="glass-card skill-card fade-up delay-1">
-            <div class="skill-icon">🛠️</div>
+            <div class="skill-icon-box"><i class="fas fa-tools"></i></div>
             <div class="skill-title">Tools &amp; Platforms</div>
             <ul class="skill-list">
               <li>Flask (ML Model Deployment)</li>
+              <li>React.js (Frontend)</li>
               <li>Jupyter Notebook</li>
               <li>Git &amp; GitHub</li>
-              <li>Docker</li>
-              <li>OpenCV, Selenium</li>
+              <li>Docker, OpenCV, Selenium</li>
             </ul>
           </div>
+
+          <!-- Card 5 -->
           <div class="glass-card skill-card fade-up delay-2">
-            <div class="skill-icon">🌐</div>
+            <div class="skill-icon-box"><i class="fas fa-globe"></i></div>
             <div class="skill-title">Web &amp; APIs</div>
             <ul class="skill-list">
               <li>Flask (REST APIs)</li>
@@ -646,8 +745,10 @@
               <li>Responsive Design</li>
             </ul>
           </div>
+
+          <!-- Card 6 -->
           <div class="glass-card skill-card fade-up delay-3">
-            <div class="skill-icon">💡</div>
+            <div class="skill-icon-box"><i class="fas fa-lightbulb"></i></div>
             <div class="skill-title">Soft Skills</div>
             <ul class="skill-list">
               <li>Problem-Solving (100+ LeetCode)</li>
@@ -657,6 +758,7 @@
               <li>Team Collaboration</li>
             </ul>
           </div>
+
         </div>
       </div>
     </section>
@@ -664,12 +766,11 @@
     <!-- ═══ PROJECTS ══════════════════════════════════════════════════ -->
     <section id="projects" class="section">
       <div class="container">
-        <div class="fade-up text-center" style="margin-bottom:56px;">
-          <span class="section-label"><i class="fas fa-rocket" style="font-size:0.65rem;"></i> My Work</span>
-          <h2 class="section-title"><span class="g">Featured Projects</span></h2>
-          <div class="divider"></div>
-          <p class="section-subtitle">Real-world ML &amp; data science projects — from image classification to
-            predictive modelling.</p>
+        <div class="fade-up hv-b">
+          <span class="ghost">PROJECTS</span>
+          <h2>Featured Projects</h2>
+          <div class="hl"></div>
+          <p>Real-world ML &amp; data science projects — from image classification to predictive modelling.</p>
         </div>
         <div class="projects-grid">
 
@@ -686,7 +787,8 @@
               <div class="project-desc">Multi-class CNN model detecting diseases across 5 major crops (Tomato, Apple,
                 Cherry, Walnut, Radish). Trained on 72,500 images across 28 disease classes with rigorous error analysis
                 on similar leaf textures.</div>
-              <div class="project-metric"><i class="fas fa-chart-line"></i> 93% Validation Accuracy · 72,500 Images</div>
+              <div class="project-metric"><i class="fas fa-chart-line"></i> 93% Validation Accuracy · 72,500 Images
+              </div>
               <div class="project-tags">
                 <span class="tag">Python</span>
                 <span class="tag">TensorFlow</span>
@@ -706,9 +808,12 @@
 
           <!-- Project 2: Crop Guidance System -->
           <div class="glass-card project-card fade-up delay-2">
-            <div class="project-thumb thumb-2" style="background: url('/static/images/crop_guidance.png') center/cover no-repeat;">
-              <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center;">
-                <i class="fas fa-seedling" style="filter: drop-shadow(0 0 16px rgba(250, 204, 21, 0.4)); font-size: 3rem; color: rgba(255,255,255,0.85);"></i>
+            <div class="project-thumb thumb-2"
+              style="background: url('/static/images/crop_guidance.png') center/cover no-repeat;">
+              <div
+                style="position: absolute; inset: 0; background: rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-seedling"
+                  style="filter: drop-shadow(0 0 16px rgba(250, 204, 21, 0.4)); font-size: 3rem; color: rgba(255,255,255,0.85);"></i>
               </div>
             </div>
             <div class="project-content">
@@ -717,7 +822,8 @@
                 <span class="project-num">02</span>
               </div>
               <div class="project-desc">Random Forest / Decision Tree model recommending optimal crops from soil &amp;
-                climate data. Automated real-time data scraping with Selenium; deployed via Flask API for live inference.
+                climate data. Automated real-time data scraping with Selenium; deployed via Flask API for live
+                inference.
               </div>
               <div class="project-metric"><i class="fas fa-check-circle"></i> 15–20% fertilizer waste reduction</div>
               <div class="project-tags">
@@ -739,10 +845,13 @@
 
           <!-- Project 3: Telecom Dashboard -->
           <div class="glass-card project-card fade-up delay-3">
-            <div class="project-thumb thumb-5" style="background: url('/static/images/telecom_analytics.png') center/cover no-repeat;">
+            <div class="project-thumb thumb-5"
+              style="background: url('/static/images/telecom_analytics.png') center/cover no-repeat;">
               <!-- Overlay for better icon visibility or just leave blank if image is enough -->
-              <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center;">
-                <i class="fas fa-chart-pie" style="filter: drop-shadow(0 0 16px rgba(244, 114, 182, 0.4)); font-size: 3rem; color: rgba(255,255,255,0.8);"></i>
+              <div
+                style="position: absolute; inset: 0; background: rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-chart-pie"
+                  style="filter: drop-shadow(0 0 16px rgba(244, 114, 182, 0.4)); font-size: 3rem; color: rgba(255,255,255,0.8);"></i>
               </div>
             </div>
             <div class="project-content">
@@ -750,7 +859,8 @@
                 <div class="project-title">Telecom Call Quality Analytics</div>
                 <span class="project-num">03</span>
               </div>
-              <div class="project-desc">Analysed large-scale telecom service data to identify trends in call drops, customer satisfaction, and network performance across Indian states.</div>
+              <div class="project-desc">Analysed large-scale telecom service data to identify trends in call drops,
+                customer satisfaction, and network performance across Indian states.</div>
               <div class="project-metric"><i class="fas fa-chart-bar"></i> Interactive Power BI Dashboards</div>
               <div class="project-tags">
                 <span class="tag">Power BI</span>
@@ -762,7 +872,8 @@
                 <a href="https://github.com/Arjun-maurya7" target="_blank" rel="noopener" class="project-link">
                   <i class="fab fa-github"></i> GitHub
                 </a>
-                <a href="https://app.powerbi.com/groups/me/reports/3257d257-0102-4cfd-a14d-a1cbe9aef9b6/ed11c7088bd4d9259cde?experience=power-bi" target="_blank" rel="noopener" class="project-link">
+                <a href="https://app.powerbi.com/groups/me/reports/3257d257-0102-4cfd-a14d-a1cbe9aef9b6/ed11c7088bd4d9259cde?experience=power-bi"
+                  target="_blank" rel="noopener" class="project-link">
                   <i class="fas fa-arrow-up-right-from-square" style="font-size:0.75rem;"></i> Demo
                 </a>
               </div>
@@ -771,9 +882,12 @@
 
           <!-- Project 4: IGNOAPS Dashboard -->
           <div class="glass-card project-card fade-up delay-1">
-            <div class="project-thumb thumb-6" style="background: url('/static/images/ignoaps_dashboard.png') center/cover no-repeat;">
-              <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center;">
-                <i class="fas fa-table" style="filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.4)); font-size: 3rem; color: rgba(255,255,255,0.85);"></i>
+            <div class="project-thumb thumb-6"
+              style="background: url('/static/images/ignoaps_dashboard.png') center/cover no-repeat;">
+              <div
+                style="position: absolute; inset: 0; background: rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-table"
+                  style="filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.4)); font-size: 3rem; color: rgba(255,255,255,0.85);"></i>
               </div>
             </div>
             <div class="project-content">
@@ -781,7 +895,8 @@
                 <div class="project-title">IGNOAPS Data Dashboard</div>
                 <span class="project-num">04</span>
               </div>
-              <div class="project-desc">Excel-based interactive dashboard analysing the Indira Gandhi National Old Age Pension Scheme dataset. Designed for non-technical policy stakeholders.</div>
+              <div class="project-desc">Excel-based interactive dashboard analysing the Indira Gandhi National Old Age
+                Pension Scheme dataset. Designed for non-technical policy stakeholders.</div>
               <div class="project-metric"><i class="fas fa-users"></i> Policy Decision Support</div>
               <div class="project-tags">
                 <span class="tag">Excel</span>
@@ -789,7 +904,8 @@
                 <span class="tag">Data Visualisation</span>
               </div>
               <div class="project-links">
-                <a href="https://github.com/Arjun-maurya7/Data_Analysis_on_IGNOAPS" target="_blank" rel="noopener" class="project-link">
+                <a href="https://github.com/Arjun-maurya7/Data_Analysis_on_IGNOAPS" target="_blank" rel="noopener"
+                  class="project-link">
                   <i class="fab fa-github"></i> GitHub
                 </a>
                 <a href="#" class="project-link muted">
@@ -798,64 +914,58 @@
               </div>
             </div>
           </div>
-            </div>
-          </div>
-
         </div>
+      </div>
+
+      </div>
       </div>
     </section>
 
     <!-- ═══ PROBLEM SOLVING ═══════════════════════════════════════════ -->
     <section id="problem-solving" class="section" style="background: var(--surface);">
       <div class="container">
-        <div class="fade-up text-center" style="margin-bottom:56px;">
-          <span class="section-label"><i class="fas fa-code" style="font-size:0.65rem;"></i> Competitive Coding</span>
-          <h2 class="section-title"><span class="g">Problem Solving</span></h2>
-          <div class="divider"></div>
-          <p class="section-subtitle">Consistent coding practice on competitive platforms — demonstrating strong
-            algorithmic thinking and language proficiency.</p>
+        <div class="fade-up hv-a">
+          <span class="num">03 · Competitive Coding</span>
+          <h2>Problem Solving</h2>
+          <p>Consistent practice across competitive platforms demonstrating strong algorithmic thinking.</p>
         </div>
         <div class="ps-grid">
 
           <!-- HackerRank -->
           <div class="glass-card ps-card fade-up delay-1">
-            <div class="ps-logo">🟢</div>
-            <div class="ps-platform">HackerRank</div>
+            <div class="ps-platform">
+              <span class="dot" style="background:#14b8a6;"></span> HackerRank
+            </div>
+            <div class="ps-big-stat">5★</div>
+            <div class="ps-big-label">Python Rating</div>
             <div class="ps-badges">
-              <div class="ps-badge">
-                <span class="stars">★★★★★</span> Python — 5 Stars
-              </div>
-              <div class="ps-badge">
-                <span class="stars">★★★★★</span> C — 5 Stars
-              </div>
-              <div class="ps-badge">
-                <span class="stars">★★★★</span> SQL — 4 Stars
-              </div>
+              <div class="ps-badge"><span class="stars">★★★★★</span> Python — 5 Stars</div>
+              <div class="ps-badge"><span class="stars">★★★★★</span> C — 5 Stars</div>
+              <div class="ps-badge"><span class="stars">★★★★</span> SQL — 4 Stars</div>
             </div>
             <a href="https://www.hackerrank.com/profile/arjunmaurya9026" target="_blank" rel="noopener"
-              class="btn btn-outline" style="font-size:0.82rem; padding:9px 20px;">
+              class="btn btn-outline" style="font-size:0.82rem; padding:9px 20px; width:100%; justify-content:center;">
               <i class="fab fa-hackerrank"></i> View Profile
             </a>
           </div>
 
           <!-- LeetCode -->
           <div class="glass-card ps-card fade-up delay-2">
-            <div class="ps-logo">🟠</div>
-            <div class="ps-platform">LeetCode</div>
-            <div class="ps-stat">100+</div>
-            <div class="ps-stat-label">DSA Problems Solved</div>
-            <div class="ps-stat">61</div>
-            <div class="ps-stat-label" style="margin-bottom:24px;">Day Solving Streak</div>
+            <div class="ps-platform">
+              <span class="dot" style="background:#f97316;"></span> LeetCode
+            </div>
+            <div class="ps-big-stat">100+</div>
+            <div class="ps-big-label">DSA Problems Solved</div>
             <div class="ps-badges">
               <div class="ps-badge">
-                <i class="fas fa-fire" style="color:#f97316;"></i> Daily Streak Champion
+                <i class="fas fa-fire" style="color:#f97316;"></i> 61-Day Solving Streak
               </div>
-              <div class="ps-badge">
-                <i class="fas fa-code" style="color:var(--accent-alt);"></i> Data Structures &amp; Algorithms
+              <div class="ps-badge alt">
+                <i class="fas fa-code"></i> Data Structures &amp; Algorithms
               </div>
             </div>
             <a href="https://leetcode.com/u/Arjun-Maurya/" target="_blank" rel="noopener" class="btn btn-outline"
-              style="font-size:0.82rem; padding:9px 20px;">
+              style="font-size:0.82rem; padding:9px 20px; width:100%; justify-content:center;">
               <i class="fas fa-external-link-alt"></i> View Profile
             </a>
           </div>
@@ -867,12 +977,11 @@
     <!-- ═══ CERTIFICATIONS ════════════════════════════════════════════ -->
     <section id="certifications" class="section">
       <div class="container">
-        <div class="fade-up text-center" style="margin-bottom:56px;">
-          <span class="section-label"><i class="fas fa-award" style="font-size:0.65rem;"></i> Credentials</span>
-          <h2 class="section-title"><span class="g">Certifications</span></h2>
-          <div class="divider"></div>
-          <p class="section-subtitle">Verified credentials from industry-leading platforms demonstrating my commitment
-            to continuous learning.</p>
+        <div class="fade-up hv-b">
+          <span class="ghost">CERTS</span>
+          <h2>Certifications</h2>
+          <div class="hl"></div>
+          <p>Verified credentials from industry-leading platforms.</p>
         </div>
         <div class="certs-grid">
 
@@ -885,7 +994,8 @@
                 <div class="cert-date">Oct 2025</div>
               </div>
             </div>
-            <a href="https://www.udemy.com/certificate/UC-061bdbc0-891d-4bed-8a8b-b24637f011b5/" target="_blank" rel="noopener" class="project-link" style="font-size:0.8rem; margin-top:2px;">
+            <a href="https://www.udemy.com/certificate/UC-061bdbc0-891d-4bed-8a8b-b24637f011b5/" target="_blank"
+              rel="noopener" class="project-link" style="font-size:0.8rem; margin-top:2px;">
               <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i> View Certificate
             </a>
           </div>
@@ -899,7 +1009,8 @@
                 <div class="cert-date">Apr 2025</div>
               </div>
             </div>
-            <a href="https://archive.nptel.ac.in/noc/Ecertificate/?q=NPTEL25CS65S24750077804443825" target="_blank" rel="noopener" class="project-link" style="font-size:0.8rem; margin-top:2px;">
+            <a href="https://archive.nptel.ac.in/noc/Ecertificate/?q=NPTEL25CS65S24750077804443825" target="_blank"
+              rel="noopener" class="project-link" style="font-size:0.8rem; margin-top:2px;">
               <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i> View Certificate
             </a>
           </div>
@@ -913,7 +1024,8 @@
                 <div class="cert-date">Dec 2024</div>
               </div>
             </div>
-            <a href="https://drive.google.com/file/d/1ggKNi5D2wv3ZGe8SUEa3EEazmmwUvyEc/view" target="_blank" rel="noopener" class="project-link" style="font-size:0.8rem; margin-top:2px;">
+            <a href="https://drive.google.com/file/d/1ggKNi5D2wv3ZGe8SUEa3EEazmmwUvyEc/view" target="_blank"
+              rel="noopener" class="project-link" style="font-size:0.8rem; margin-top:2px;">
               <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i> View Certificate
             </a>
           </div>
@@ -927,7 +1039,8 @@
                 <div class="cert-date">Sep 2024</div>
               </div>
             </div>
-            <a href="https://www.coursera.org/account/accomplishments/verify/31MJ9ZY6T93V" target="_blank" rel="noopener" class="project-link" style="font-size:0.8rem; margin-top:2px;">
+            <a href="https://www.coursera.org/account/accomplishments/verify/31MJ9ZY6T93V" target="_blank"
+              rel="noopener" class="project-link" style="font-size:0.8rem; margin-top:2px;">
               <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i> View Certificate
             </a>
           </div>
@@ -941,7 +1054,8 @@
                 <div class="cert-date">Sep 2024</div>
               </div>
             </div>
-            <a href="https://www.coursera.org/account/accomplishments/verify/LDG7IIM4HCZP" target="_blank" rel="noopener" class="project-link" style="font-size:0.8rem; margin-top:2px;">
+            <a href="https://www.coursera.org/account/accomplishments/verify/LDG7IIM4HCZP" target="_blank"
+              rel="noopener" class="project-link" style="font-size:0.8rem; margin-top:2px;">
               <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i> View Certificate
             </a>
           </div>
@@ -955,7 +1069,8 @@
                 <div class="cert-date">Mar–Apr 2025</div>
               </div>
             </div>
-            <a href="https://drive.google.com/file/d/1qMjE3gyV81-qlQ-jPEgIKl8omta5lS6S/view" target="_blank" rel="noopener" class="project-link" style="font-size:0.8rem; margin-top:2px;">
+            <a href="https://drive.google.com/file/d/1qMjE3gyV81-qlQ-jPEgIKl8omta5lS6S/view" target="_blank"
+              rel="noopener" class="project-link" style="font-size:0.8rem; margin-top:2px;">
               <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i> View Certificate
             </a>
           </div>
@@ -978,9 +1093,11 @@
           <div class="divider"></div>
           <p class="section-subtitle">Open to ML internships, collaborations, and freelance data science projects.</p>
         </div>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:48px; align-items:stretch;">
+        <div
+          style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:48px; align-items:stretch;">
           <!-- Form -->
-          <div class="glass-card fade-up" style="padding:36px; display:flex; flex-direction:column; justify-content:space-between; height:100%;">
+          <div class="glass-card fade-up"
+            style="padding:36px; display:flex; flex-direction:column; justify-content:space-between; height:100%;">
             <p style="font-size:1rem; font-weight:700; color:var(--text); margin-bottom:24px;">Send me a message</p>
             <form class="contact-form">
               <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
@@ -1005,28 +1122,36 @@
           </div>
           <!-- Info -->
           <div class="fade-up delay-2" style="display:flex; flex-direction:column; height: 100%;">
-            <div class="glass-card" style="padding:36px; flex:1; display:flex; flex-direction:column; justify-content:center;">
+            <div class="glass-card"
+              style="padding:36px; flex:1; display:flex; flex-direction:column; justify-content:center;">
               <p style="font-size:1rem; font-weight:700; color:var(--text); margin-bottom:8px;">Contact Information</p>
               <p style="font-size:0.875rem; color:var(--text-muted); margin-bottom:28px;">I respond within 24 hours.
                 Let's build something great together.</p>
               <div style="display:flex; flex-direction:column; gap:0;">
 
-                <div style="display:flex; align-items:center; gap:14px; padding:14px 0; border-bottom:1px solid var(--border);">
+                <div
+                  style="display:flex; align-items:center; gap:14px; padding:14px 0; border-bottom:1px solid var(--border);">
                   <div class="contact-icon" style="flex-shrink:0;"><i class="fas fa-envelope"></i></div>
                   <span class="contact-info-label" style="margin-bottom:0; flex-shrink:0;">Email:</span>
-                  <a href="mailto:arjunmaurya9026@gmail.com" class="contact-info-value" style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">arjunmaurya9026@gmail.com</a>
+                  <a href="mailto:arjunmaurya9026@gmail.com" class="contact-info-value"
+                    style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">arjunmaurya9026@gmail.com</a>
                 </div>
 
-                <div style="display:flex; align-items:center; gap:14px; padding:14px 0; border-bottom:1px solid var(--border);">
+                <div
+                  style="display:flex; align-items:center; gap:14px; padding:14px 0; border-bottom:1px solid var(--border);">
                   <div class="contact-icon" style="flex-shrink:0;"><i class="fab fa-linkedin-in"></i></div>
                   <span class="contact-info-label" style="margin-bottom:0; flex-shrink:0;">LinkedIn:</span>
-                  <a href="https://linkedin.com/in/maurya-arjun" target="_blank" rel="noopener" class="contact-info-value" style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">linkedin.com/in/maurya-arjun</a>
+                  <a href="https://linkedin.com/in/maurya-arjun" target="_blank" rel="noopener"
+                    class="contact-info-value"
+                    style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">linkedin.com/in/maurya-arjun</a>
                 </div>
 
-                <div style="display:flex; align-items:center; gap:14px; padding:14px 0; border-bottom:1px solid var(--border);">
+                <div
+                  style="display:flex; align-items:center; gap:14px; padding:14px 0; border-bottom:1px solid var(--border);">
                   <div class="contact-icon" style="flex-shrink:0;"><i class="fab fa-github"></i></div>
                   <span class="contact-info-label" style="margin-bottom:0; flex-shrink:0;">GitHub:</span>
-                  <a href="https://github.com/Arjun-maurya7" target="_blank" rel="noopener" class="contact-info-value" style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">github.com/Arjun-maurya7</a>
+                  <a href="https://github.com/Arjun-maurya7" target="_blank" rel="noopener" class="contact-info-value"
+                    style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">github.com/Arjun-maurya7</a>
                 </div>
 
                 <div style="display:flex; align-items:center; gap:14px; padding:14px 0;">

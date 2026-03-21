@@ -80,6 +80,8 @@ body {
   position: relative;
 }
 
+
+
 /* Ambient Lighting Blobs */
 body::before,
 body::after {
@@ -107,6 +109,12 @@ body::after {
   width: 600px;
   height: 600px;
   background: radial-gradient(circle, var(--blob-2) 0%, transparent 70%);
+}
+
+/* ML dot-grid background — from synthetic_portfolio.html design language */
+body {
+  background-image: radial-gradient(circle, var(--border) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
 a {
@@ -373,6 +381,74 @@ button {
   background: var(--accent);
   border-radius: 2px;
   margin: 18px 0;
+}
+
+/* ── Section Header Variant A — Left bordered with number label ────── */
+.hv-a {
+  margin-bottom: 56px;
+}
+.hv-a .num {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  margin-bottom: 10px;
+}
+.hv-a h2 {
+  font-size: clamp(1.9rem, 4vw, 2.7rem);
+  margin-bottom: 10px;
+  border-left: 4px solid var(--accent);
+  padding-left: 18px;
+  letter-spacing: -0.025em;
+}
+.hv-a p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  padding-left: 22px;
+}
+
+/* ── Section Header Variant B — Ghost text backdrop, centered ─────── */
+.hv-b {
+  margin-bottom: 56px;
+  text-align: center;
+  position: relative;
+  padding: 16px 0;
+}
+.hv-b .ghost {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(4rem, 12vw, 8rem);
+  font-weight: 800;
+  color: var(--text);
+  opacity: 0.03;
+  white-space: nowrap;
+  user-select: none;
+  font-family: inherit;
+  letter-spacing: -0.02em;
+  pointer-events: none;
+}
+.hv-b h2 {
+  font-size: clamp(1.9rem, 4vw, 2.7rem);
+  position: relative;
+  letter-spacing: -0.025em;
+}
+.hv-b .hl {
+  width: 48px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin: 14px auto 14px;
+}
+.hv-b p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  position: relative;
+  max-width: 540px;
+  margin: 0 auto;
 }
 
 .text-center .divider {
