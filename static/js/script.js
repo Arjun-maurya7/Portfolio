@@ -408,7 +408,13 @@ function initSnow() {
             // Draw
             ctx.beginPath();
             ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(255, 255, 255, ${f.opacity})`;
+            
+            // Check current theme for color
+            const isLight = document.documentElement.dataset.theme === 'light';
+            // Soft indigo for light mode (79, 70, 229), white for dark mode (255, 255, 255)
+            const rgb = isLight ? '79, 70, 229' : '255, 255, 255';
+            
+            ctx.fillStyle = `rgba(${rgb}, ${f.opacity})`;
             ctx.fill();
 
             // Keep alive while on screen (allow slight off-sides)
@@ -540,6 +546,79 @@ function initSpotlight() {
     document.addEventListener('mouseenter', () => { el.style.opacity = '1'; });
 }
 
+// ── 3D Tilt Effect ───────────────────────────────────────────────
+function init3DTilt() {
+    if (window.matchMedia('(hover: none)').matches) return;
+    const cards = document.querySelectorAll('.glass-card');
+    cards.forEach(card => {
+        let rafId = null;
+        card.addEventListener('mousemove', e => {
+            if (rafId) cancelAnimationFrame(rafId);
+            rafId = requestAnimationFrame(() => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const cx = rect.width / 2;
+                const cy = rect.height / 2;
+                const tiltX = (y - cy) / cy * -6; 
+                const tiltY = (x - cx) / cx * 6;
+                card.style.transform = `perspective(1000px) translateY(-8px) scale(1.02) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+            });
+        });
+        card.addEventListener('mouseleave', () => {
+            if (rafId) cancelAnimationFrame(rafId);
+            card.style.transform = '';
+        });
+    });
+}
+
+// ── Magnetic Elements ─────────────────────────────────────────────
+function initMagneticButtons() {
+    if (window.matchMedia('(hover: none)').matches) return;
+    const magneticEls = document.querySelectorAll('.btn, .nav-link, .nav-brand, .social-btn');
+    magneticEls.forEach(el => {
+        let rafId = null;
+        el.addEventListener('mousemove', e => {
+            if (rafId) cancelAnimationFrame(rafId);
+            rafId = requestAnimationFrame(() => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+            });
+        });
+        el.addEventListener('mouseleave', () => {
+            if (rafId) cancelAnimationFrame(rafId);
+            el.style.transform = '';
+        });
+    });
+}
+
+// ── Theme Toggle ─────────────────────────────────────────────────
+function initThemeToggle() {
+    const desktopBtn = document.getElementById('theme-toggle');
+    const mobileBtn = document.getElementById('mobile-theme-toggle');
+    
+    function updateIcons() {
+        const isLight = document.documentElement.dataset.theme === 'light';
+        const iconClass = isLight ? 'fa-moon' : 'fa-sun';
+        if (desktopBtn) desktopBtn.innerHTML = `<i class="fas ${iconClass}"></i>`;
+        if (mobileBtn) mobileBtn.innerHTML = `<i class="fas ${iconClass}"></i> Switch Theme`;
+    }
+    
+    function toggleTheme() {
+        const isLight = document.documentElement.dataset.theme === 'light';
+        document.documentElement.dataset.theme = isLight ? 'dark' : 'light';
+        localStorage.setItem('portfolio-theme', isLight ? 'dark' : 'light');
+        updateIcons();
+    }
+    
+    if (desktopBtn) desktopBtn.addEventListener('click', toggleTheme);
+    if (mobileBtn) mobileBtn.addEventListener('click', toggleTheme);
+    
+    updateIcons();
+}
+
 // ── Boot ─────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
     initMobileNav();
@@ -553,4 +632,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSnow();
     initCursor();
     initSpotlight();
+    init3DTilt();
+    initMagneticButtons();
+    initThemeToggle();
 });
