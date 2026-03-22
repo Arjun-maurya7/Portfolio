@@ -1,6 +1,11 @@
+import os
+from dotenv import load_dotenv
 from flask import Flask, render_template, send_from_directory, request, jsonify
 import smtplib
 from email.mime.text import MIMEText
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = Flask(__name__)
 
@@ -91,6 +96,10 @@ certificates_data = [
 
 
 # ── Routes ─────────────────────────────────────────────────────────
+@app.route('/test-sync')
+def test_sync():
+    return "Sync is working!"
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -119,8 +128,8 @@ def send_message():
 
     message_body = f"Name: {name}\nEmail: {email}\nMessage:\n{message}"
 
-    my_email = "arjunpytest@gmail.com"
-    password = "sjzahrdgzstrmlnj"
+    my_email = os.getenv("EMAIL_USER", "")
+    password = os.getenv("EMAIL_PASSWORD", "")
     
     msg = MIMEText(message_body, "plain", "utf-8")
     msg["Subject"] = f"New Portfolio Contact from {name}"

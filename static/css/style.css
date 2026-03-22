@@ -4,8 +4,8 @@
 
 :root {
   --bg: #0a0a14;
-  --surface: #12121e;
-  --surface-2: #181824;
+  --surface: #161626;
+  --surface-2: #1e1e30;
   --border: rgba(255, 255, 255, 0.08);
   --border-hover: rgba(99, 102, 241, 0.45);
   --accent: #6366f1;
@@ -185,23 +185,33 @@ button {
 }
 
 .nav-brand {
-  width: 36px;
-  height: 36px;
-  background: var(--accent);
+  width: 40px;
+  height: 40px;
   border-radius: var(--radius-sm);
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 800;
-  font-size: 1.1rem;
-  color: #fff;
   flex-shrink: 0;
-  transition: background 0.2s, transform 0.2s;
+  transition: transform 0.2s;
+}
+
+.nav-brand img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .nav-brand:hover {
-  background: #4f46e5;
   transform: scale(1.06);
+}
+
+:root[data-theme='light'] .nav-brand {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+:root[data-theme='light'] .nav-brand:hover {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
 }
 
 .nav-links {
@@ -398,6 +408,7 @@ button {
 }
 .hv-a h2 {
   font-size: clamp(1.9rem, 4vw, 2.7rem);
+  line-height: 1.1;
   margin-bottom: 10px;
   border-left: 4px solid var(--accent);
   padding-left: 18px;
@@ -433,6 +444,7 @@ button {
 }
 .hv-b h2 {
   font-size: clamp(1.9rem, 4vw, 2.7rem);
+  line-height: 1.1;
   position: relative;
   letter-spacing: -0.025em;
 }
@@ -655,6 +667,32 @@ textarea.form-input {
 
 .avatar-wrap img:hover {
   transform: scale(1.04);
+}
+
+/* Light mode avatar override — matching synthetic_portfolio.html style */
+:root[data-theme='light'] .avatar-wrap {
+  border-radius: 12px;
+}
+
+:root[data-theme='light'] .avatar-wrap::before {
+  display: none;
+}
+
+:root[data-theme='light'] .avatar-wrap img {
+  border-radius: 12px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: top;
+}
+
+:root[data-theme='light'] .avatar-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 16px -16px -16px 16px;
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  z-index: 0;
+  opacity: 0.6;
 }
 
 /* ── Scroll animations ───────────────────────────────────────────── */
