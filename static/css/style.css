@@ -303,10 +303,17 @@ button {
   z-index: 99;
   flex-direction: column;
   gap: 2px;
+  transform: translateY(-8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s;
 }
 
 .mobile-nav.open {
   display: flex;
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
 }
 
 .mobile-nav .nav-link {
@@ -733,11 +740,11 @@ textarea.form-input {
 
   0%,
   100% {
-    transform: translateY(0);
+    transform: translateY(0) translateX(-50%);
   }
 
   50% {
-    transform: translateY(-12px);
+    transform: translateY(-12px) translateX(-50%);
   }
 }
 
@@ -778,10 +785,20 @@ textarea.form-input {
 
 /* ── Typewriter ──────────────────────────────────────────────────── */
 .typewriter-text {
-  border-right: 2px solid var(--accent-light);
-  animation: blink 1s infinite;
+  border-right: 3px solid var(--accent-light);
+  animation: blink 1s step-end infinite;
   white-space: nowrap;
   overflow: hidden;
+  display: inline-block;
+}
+
+/* Allow typewriter text to wrap on mobile */
+@media (max-width: 600px) {
+  .typewriter-text {
+    white-space: normal;
+    border-right: none;
+    animation: none;
+  }
 }
 
 /* ── Contact info cards ──────────────────────────────────────────── */

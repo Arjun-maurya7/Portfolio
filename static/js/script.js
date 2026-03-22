@@ -52,7 +52,7 @@ function initScrollAnimations() {
                 io.unobserve(e.target);
             }
         });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.05, rootMargin: '0px' });
 
     els.forEach(el => io.observe(el));
 }
@@ -299,7 +299,17 @@ function initSnow() {
     }
     resize();
     window.addEventListener('resize', resize, { passive: true });
-    window.addEventListener('scroll', refreshRects, { passive: true });
+    
+    // Throttle scroll updates for performance
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+        if (!scrollTimeout) {
+            scrollTimeout = setTimeout(() => {
+                refreshRects();
+                scrollTimeout = null;
+            }, 200);
+        }
+    }, { passive: true });
 
     // ── Spawn a flake ────────────────────────────────────────────
     function spawnFlake() {
