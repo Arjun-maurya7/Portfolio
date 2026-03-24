@@ -175,6 +175,7 @@
         grid-template-columns: 1fr;
         gap: 16px;
       }
+
       .skill-card {
         padding: 24px 20px;
       }
@@ -231,7 +232,8 @@
     @media (max-width: 768px) {
       .skill-list li {
         font-size: 0.95rem;
-        padding: 10px 0; /* Touch-friendly spacing */
+        padding: 10px 0;
+        /* Touch-friendly spacing */
       }
     }
 
@@ -600,7 +602,7 @@
             Computer Science Engineering Student at Lovely Professional University &nbsp;<br> Minor in Data Science
           </p>
           <div class="hero-btns" style="justify-content:center;">
-            <a href="/static/resume/Arjun_Maurya_Resume.pdf" download="Arjun_Maurya_Resume.pdf" class="btn btn-primary">
+            <a href="/static/resume/Arjun_maurya_CV.pdf" download="Arjun_maurya_CV.pdf" class="btn btn-primary">
               <i class="fas fa-file-arrow-down"></i> Download Resume
             </a>
             <a href="/contact" class="btn btn-outline">
@@ -609,14 +611,17 @@
           </div>
         </div>
       </div>
-      <a href="#about" class="hero-scroll-hint" style="cursor: pointer; pointer-events: auto;" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'}); return false;">
+      <a href="#about" class="hero-scroll-hint" style="cursor: pointer; pointer-events: auto;"
+        onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'}); return false;">
         <i class="fas fa-chevron-down"></i>
         <span>Scroll</span>
       </a>
     </section>
 
     <!-- ═══ ABOUT ═════════════════════════════════════════════════════ -->
-    <div style="width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); opacity: 0.3;"></div>
+    <div
+      style="width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); opacity: 0.3;">
+    </div>
     <section id="about" class="section" style="background: var(--surface);">
       <div class="container">
         <div class="fade-up hv-a" style="margin-bottom:48px;">
@@ -828,30 +833,34 @@
 
           <!-- Project 1: Plant Disease Detection -->
           <div class="glass-card project-card fade-up delay-1">
-            <div class="project-thumb thumb-1">
-              <i class="fas fa-leaf" style="filter: drop-shadow(0 0 16px rgba(74, 222, 128, 0.4));"></i>
+            <div class="project-thumb thumb-1"
+              style="background: url('/static/images/plant_disease_v2.png') center/cover no-repeat;">
+              <i class="fas fa-leaf" style="filter: drop-shadow(0 0 16px rgba(74, 222, 128, 0.4)); display: none;"></i>
             </div>
             <div class="project-content">
               <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
                 <div class="project-title">Plant Disease Detection</div>
                 <span class="project-num">01</span>
               </div>
-              <div class="project-desc">Multi-class CNN model detecting diseases across 5 major crops (Tomato, Apple,
-                Cherry, Walnut, Radish). Trained on 72,500 images across 28 disease classes with rigorous error analysis
-                on similar leaf textures.</div>
-              <div class="project-metric"><i class="fas fa-chart-line"></i> 93% Validation Accuracy · 72,500 Images
-              </div>
+              <div class="project-desc">
+                Engineered a VGG19-SVM hybrid model diagnosing 17 crops with 99.5% accuracy. Integrated a Gradio
+                interface providing real-time disease identification, biological causes, and actionable remedies to
+                improve agricultural yields.</div>
+              <div class="project-metric"><i class="fas fa-chart-line"></i> 99.5% Accuracy · Gradio Interface</div>
               <div class="project-tags">
                 <span class="tag">Python</span>
                 <span class="tag">TensorFlow</span>
-                <span class="tag">CNN</span>
+                <span class="tag">Scikit-Learn (SVM)</span>
                 <span class="tag">OpenCV</span>
+                <span class="tag">NumPy</span>
               </div>
               <div class="project-links">
-                <a href="https://github.com/Arjun-maurya7" target="_blank" rel="noopener" class="project-link">
+                <a href="https://github.com/Arjun-maurya7/crop-disease-detector" target="_blank" rel="noopener"
+                  class="project-link">
                   <i class="fab fa-github"></i> GitHub
                 </a>
-                <a href="#" class="project-link muted">
+                <a href="https://huggingface.co/spaces/Arjun-Maurya/krishika-ai" target="_blank" rel="noopener"
+                  class="project-link">
                   <i class="fas fa-arrow-up-right-from-square" style="font-size:0.75rem;"></i> Demo
                 </a>
               </div>
